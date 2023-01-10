@@ -18,6 +18,7 @@ FILES_OBJS = $(FILES_SRCS:.c=.o)
 DIR_SRCS = ./src/
 DIR_OBJS = ./obj/
 DIR_LIBFT = ./src/libft
+DIR_MLX = ./src/MLX42
 
 vpath %.c $(DIR_SRCS) $(DIR_OBJS)
 vpath %.c $(DIR_SRCS)collision/ $(DIR_OBJS)
@@ -33,10 +34,12 @@ OBJS = $(FILES_OBJS:%=$(DIR_OBJS)%)
 # ----------------------------------------Flags
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
+MLXFLAGS = -I $(DIR_MLX)include -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
 INC = -Iinc -I$(DIR_LIBFT)
 
 # ----------------------------------------Libraries
 LIBFT = $(DIR_LIBFT)/libft.a
+MLX = $(DIR_MLX)/libmlx42.a
 
 # ----------------------------------------Debug
 ifdef WITH_ADDRESS
@@ -48,8 +51,8 @@ endif
 all:
 	@$(MAKE) $(NAME) -j4
 
-$(NAME): $(DIR_OBJS) $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -lm $(INC) $(LIBFT)
+$(NAME): $(DIR_OBJS) $(OBJS) $(LIBFT) $(MLX)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -lm $(INC) $(LIBFT) $(MLX)
 
 $(DIR_OBJS)%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@  $(INC)
@@ -61,6 +64,9 @@ $(LIBFT):
 	make -C $(DIR_LIBFT)
 	@echo "libft made!"
 
+$(MLX):
+	make -C $(DIR_MLX)
+
 # ----------------------------------------Debug
 address:
 	$(MAKE) re WITH_ADDRESS=1
@@ -68,10 +74,12 @@ address:
 # ----------------------------------------Cleaning
 clean:
 	make -C $(DIR_LIBFT) clean
+	make -C $(DIR_MLX) clean
 	rm -f $(OBJS)
 
 fclean: clean
 	make -C $(DIR_LIBFT) fclean
+	make -C $(DIR_MLX) fclean
 	rm -f $(NAME)
 
 re: fclean all

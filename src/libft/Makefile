@@ -34,20 +34,20 @@ NAME	= libft.a
 all		:	${NAME}
 
 %.o 	:	%.c
-	@${CC} ${CFLAGS} -c $< -o $@
+	${CC} ${CFLAGS} -c $< -o $@
 
 ${NAME}	:	${OBJS}
-	@ar -crs ${NAME} ${OBJS}
+	ar -crs ${NAME} ${OBJS}
 
 bonus 	: 	$(OBJS)
-	@$(MAKE) WITH_BONUS=1
+	$(MAKE) WITH_BONUS=1
 
 # Cleaning
 clean	:
-	@rm -f ${OBJS} ${B_OBJS}
+	rm -f ${OBJS} ${B_OBJS}
 
 fclean	:	clean
-	@rm -f ${NAME}
+	rm -f ${NAME}
 
 re		:	fclean all
 
