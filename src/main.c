@@ -1,10 +1,9 @@
 #include "vect3_math.h"
+#include "collision.h"
 #include <stdio.h>
 
 #define WIDTH 32
 #define HEIGHT 32
-double	quadr_form(const double a, const double b, const double c);
-double	sphere_collision(t_vect3 o, t_vect3 d, t_vect3 c, double r);
 
 int main(void)
 {
