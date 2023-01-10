@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sphere.h                                           :+:      :+:    :+:   */
+/*   plane.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/10 12:03:54 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/01/10 12:03:55 by gwinnink         ###   ########.fr       */
+/*   Created: 2023/01/10 17:37:04 by gwinnink          #+#    #+#             */
+/*   Updated: 2023/01/10 17:59:41 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SPHERE_H
-# define SPHERE_H
+#include "vect3_math.h"
 
-# include "vect3_math.h"
 
-typedef struct s_sphere
+/*
+plane = (point - p_o) * n = 0
+ray   = point = r_o + t * d
+t = ((p_o - r_o) * n) / (d * n)
+*/
+double	plane_collision(t_vect3 r_o, t_vect3 d, t_vect3 p_o, t_vect3 n)
 {
-	t_vect3	center;
-	double	r;
-}	t_sphere;
+	const double	denominator = vect3_dot_product(d, n);
 
-#endif
+	if (denominator <= 0)
+		return (denominator);
+	else
+		return (vect3_dot_product(vect3_substract(p_o, r_o), n) / denominator);
+}

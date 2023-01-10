@@ -11,6 +11,9 @@ FILES_SRCS =	main.c \
 				vect3_dot_product.c \
 				quadratic_formula.c \
 				sphere.c \
+				plane.c \
+				object_utils.c \
+				objects.c \
 
 FILES_OBJS = $(FILES_SRCS:.c=.o)
 
@@ -33,9 +36,9 @@ OBJS = $(FILES_OBJS:%=$(DIR_OBJS)%)
 
 # ----------------------------------------Flags
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+# CFLAGS = -Wall -Wextra -Werror
 MLXFLAGS = -I $(DIR_MLX)include -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
-INC = -Iinc -I$(DIR_LIBFT)
+INC = -Iinc -I$(DIR_LIBFT) $(MLXFLAGS)
 
 # ----------------------------------------Libraries
 LIBFT = $(DIR_LIBFT)/libft.a

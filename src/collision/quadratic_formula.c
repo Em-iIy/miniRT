@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 12:01:37 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/01/10 12:01:52 by gwinnink         ###   ########.fr       */
+/*   Updated: 2023/01/10 12:48:44 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,9 @@ double	quadr_form(const double a, const double b, const double c)
 		return ((-1 * b) / (2 * a));
 	t1 = ((-1 * b) - sqrt(discr)) / (2 * a);
 	t2 = ((-1 * b) + sqrt(discr)) / (2 * a);
+	if (t1 < t2 && t1 > 0)
+		return (t1);
+	else if (t2 < t1 && t2 > 0)
+		return (t2);
 	return (fmin(fabs(t1), fabs(t2)));
 }
