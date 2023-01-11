@@ -6,12 +6,11 @@
 /*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 17:37:04 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/01/10 17:59:41 by gwinnink         ###   ########.fr       */
+/*   Updated: 2023/01/11 11:27:56 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vect3_math.h"
-
 
 /*
 plane = (point - p_o) * n = 0

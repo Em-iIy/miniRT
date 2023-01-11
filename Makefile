@@ -37,7 +37,7 @@ OBJS = $(FILES_OBJS:%=$(DIR_OBJS)%)
 # ----------------------------------------Flags
 CC = gcc
 # CFLAGS = -Wall -Wextra -Werror
-MLXFLAGS = -I $(DIR_MLX)include -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
+MLXFLAGS = -I $(DIR_MLX)/include -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
 INC = -Iinc -I$(DIR_LIBFT) $(MLXFLAGS)
 
 # ----------------------------------------Libraries

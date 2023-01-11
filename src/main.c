@@ -6,14 +6,14 @@
 /*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 12:23:36 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/01/10 18:13:00 by gwinnink         ###   ########.fr       */
+/*   Updated: 2023/01/11 12:35:15 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vect3_math.h"
 #include "collision.h"
 #include "objects.h"
-#include "/Users/gwinnink/Documents/minirt/src/MLX42/include/MLX42/MLX42.h"
+#include "MLX42/MLX42.h"
 #include <stdio.h>
 #include <math.h>
 #include <stdbool.h>
@@ -45,14 +45,11 @@ int	main(void)
 	objs = NULL;
 	obj_add_front(&objs, obj_sp(obj_new(vect3(501, 500, 20), get_rgba(255, 0, 0, 255)), 3));
 	obj_add_front(&objs, obj_sp(obj_new(vect3(500, 501, 21), get_rgba(0, 255, 0, 255)), 3));
-	obj_add_front(&objs, obj_sp(obj_new(vect3(499, 500, 19), get_rgba(0, 0, 255, 255)), 3));
-	obj_add_front(&objs, obj_pl(obj_new(vect3(0, 0, 10), get_rgba(120, 100, 100, 255)), vect3(0, -1, 1)));
-	// obj_add_front(&objs, obj_new(sphere(vect3(501, 500, 20), 3), SPHERE, get_rgba(255, 0, 0, 255)));
-	// obj_add_front(&objs, obj_new(sphere(vect3(500, 501, 21), 3), SPHERE, get_rgba(0, 255, 0, 255)));
-	// obj_add_front(&objs, obj_new(sphere(vect3(499, 500, 19), 2.4), SPHERE, get_rgba(0, 0, 255, 255)));
+	obj_add_front(&objs, obj_sp(obj_new(vect3(499, 510, 19), get_rgba(0, 0, 255, 255)), 3));
+	obj_add_front(&objs, obj_pl(obj_new(vect3(0, 1000, 0), get_rgba(120, 100, 100, 255)), vect3(0, 1, 0)));
 	vect3_print(camera);
 	printf("step size = %f\n", step);
-	for (double i = HEIGHT; i >= 0 ; i--)
+	for (double i = 0; i < HEIGHT ; i++)
 	{
 		for (double j = 0; j < WIDTH; j++)
 		{

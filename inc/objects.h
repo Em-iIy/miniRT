@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 14:37:49 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/01/10 17:59:57 by gwinnink         ###   ########.fr       */
+/*   Updated: 2023/01/11 11:32:22 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_object
 
 int			get_collision(t_vect3 o, t_vect3 d, t_object *objs, double *t);
 double		sphere_collision(t_vect3 o, t_vect3 d, t_vect3 c, double r);
-double	plane_collision(t_vect3 r_o, t_vect3 d, t_vect3 p_o, t_vect3 n);
+double		plane_collision(t_vect3 r_o, t_vect3 d, t_vect3 p_o, t_vect3 n);
 
 t_object	*obj_sp(t_object *obj, double radius);
 t_object	*obj_pl(t_object *obj, t_vect3 orientation);
