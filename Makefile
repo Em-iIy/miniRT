@@ -14,6 +14,10 @@ FILES_SRCS =	main.c \
 				plane.c \
 				object_utils.c \
 				objects.c \
+				init_scene.c \
+				add_camera.c \
+				add_lights.c \
+				get_colour.c \
 
 FILES_OBJS = $(FILES_SRCS:.c=.o)
 
@@ -26,6 +30,8 @@ DIR_MLX = ./src/MLX42
 vpath %.c $(DIR_SRCS) $(DIR_OBJS)
 vpath %.c $(DIR_SRCS)collision/ $(DIR_OBJS)
 vpath %.c $(DIR_SRCS)vect3_math/ $(DIR_OBJS)
+vpath %.c $(DIR_SRCS)parser/ $(DIR_OBJS)
+vpath %.c $(DIR_SRCS)lighting/ $(DIR_OBJS)
 
 
 # ----------------------------------------Sources

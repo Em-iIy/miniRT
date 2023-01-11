@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   objects.h                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/10 14:37:49 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/01/11 11:32:22 by gwinnink         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   objects.h                                          :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/01/10 14:37:49 by gwinnink      #+#    #+#                 */
+/*   Updated: 2023/01/11 13:29:02 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_object
 	double			radius;
 }	t_object;
 
+double		quadr_form(const double a, const double b, const double c);
 int			get_collision(t_vect3 o, t_vect3 d, t_object *objs, double *t);
 double		sphere_collision(t_vect3 o, t_vect3 d, t_vect3 c, double r);
 double		plane_collision(t_vect3 r_o, t_vect3 d, t_vect3 p_o, t_vect3 n);
