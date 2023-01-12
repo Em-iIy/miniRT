@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/10 12:01:37 by gwinnink      #+#    #+#                 */
-/*   Updated: 2023/01/11 13:47:32 by fpurdom       ########   odam.nl         */
+/*   Updated: 2023/01/12 14:55:40 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,5 @@ double	quadr_form(const double a, const double b, const double c)
 		return (t1);
 	else if (t2 > 0 && (t2 < t1 || t1 < 0))
 		return (t2);
+	return (0);
 }

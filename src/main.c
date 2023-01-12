@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 12:23:36 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/01/12 14:24:55 by gwinnink         ###   ########.fr       */
+/*   Updated: 2023/01/12 15:11:05 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 #define WIDTH 1000
 #define HEIGHT 1000
-#define FOV 90
+#define FOV 150
 
 t_vect3	cast_ray(t_scene scene, const double dist, double x, double y)
 {
@@ -48,7 +48,7 @@ int	main(void)
 {
 	mlx_t			*mlx;
 	t_scene			scene;
-	const double	dist = (WIDTH / 2) / tan((FOV / 2) * (M_PI / 180));
+	const double	dist = (WIDTH / 2) / tan(((FOV / 2) * (M_PI / 180)) * (M_PI / 180));
 	t_vect3			ray;
 	double 			t;
 	int				color;
@@ -67,7 +67,7 @@ int	main(void)
 			ray = cast_ray(scene, dist, x, y - HEIGHT / 2);
 			// vect3_print(ray);
 			t = -1;
-			color = get_collision(scene.camera.pos, ray, scene.objs, &t);
+			color = get_collision((void *)&scene, ray, &t);
 			mlx_put_pixel(img, x, HEIGHT - y, color);
 		}
 	}
