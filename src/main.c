@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 12:23:36 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/01/12 15:11:05 by gwinnink         ###   ########.fr       */
+/*   Updated: 2023/01/12 15:25:34 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 #define WIDTH 1000
 #define HEIGHT 1000
 #define FOV 150
+#define DIST 1
 
 t_vect3	cast_ray(t_scene scene, const double dist, double x, double y)
 {
@@ -34,8 +35,8 @@ t_vect3	cast_ray(t_scene scene, const double dist, double x, double y)
 
 	p1 = vect3_substract(vect3_add(scene.camera.pos, vect3_multiply(scene.camera.orient, dist)), vect3_multiply(right, WIDTH / 2));
 	// p3 = vect3_add(vect3_add(scene.camera.pos, vect3_multiply(scene.camera.orient, dist)), vect3_multiply(right, WIDTH / 2));
-	p2 = vect3_add(p1, vect3_multiply(right, x);
-	ret = vect3_add(p2, vect3_multiply(up, y);
+	p2 = vect3_add(p1, vect3_multiply(right, x));
+	ret = vect3_add(p2, vect3_multiply(up, y));
 	// vect3_print(p1);
 	// vect3_print(p2);
 	// vect3_print(p3);
@@ -49,6 +50,7 @@ int	main(void)
 	mlx_t			*mlx;
 	t_scene			scene;
 	const double	dist = (WIDTH / 2) / tan(((FOV / 2) * (M_PI / 180)) * (M_PI / 180));
+	const double	step = DIST * tan((FOV / 2) * (M_PI / 180)) / WIDTH / 2;
 	t_vect3			ray;
 	double 			t;
 	int				color;
@@ -57,14 +59,15 @@ int	main(void)
 	mlx = mlx_init(WIDTH, HEIGHT, "MiniReTweet", false);
 	img = mlx_new_image(mlx, WIDTH + 1, HEIGHT + 1);
 	init_scene(NULL, &scene);
-	printf("step = %f\n", 2 * dist * tan((FOV / 2) * (M_PI / 180)));
+	printf("step = %f\n",dist);
 	for (double y = 0; y < HEIGHT ; y++)
 	{
 		for (double x = 0; x < WIDTH; x++)
 		{
 			// ray = vect3_add(vect3((x - WIDTH / 2), (y - HEIGHT / 2), dist), scene.camera.pos);
+			ray = vect3((x - WIDTH / 2) * step, (y - HEIGHT / 2) * step, DIST);
 			// vect3_print(ray);
-			ray = cast_ray(scene, dist, x, y - HEIGHT / 2);
+			// ray = cast_ray(scene, dist, x, y - HEIGHT / 2);
 			// vect3_print(ray);
 			t = -1;
 			color = get_collision((void *)&scene, ray, &t);
