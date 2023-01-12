@@ -7,8 +7,11 @@ FILES_SRCS =	main.c \
 				vect3_add.c \
 				vect3_substract.c \
 				vect3_multiply.c \
+				vect3_divide.c \
 				vect3_print.c \
 				vect3_dot_product.c \
+				vect3_abs.c \
+				vect3_normalize.c \
 				quadratic_formula.c \
 				sphere.c \
 				plane.c \
@@ -64,7 +67,7 @@ $(NAME): $(DIR_OBJS) $(OBJS) $(LIBFT) $(MLX)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -lm $(INC) $(LIBFT) $(MLX)
 
 $(DIR_OBJS)%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@  $(INC)
+	$(CC) $(CFLAGS) -c $< -o $@ $(INC)
 
 $(DIR_OBJS):
 	mkdir -p $@

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/01/10 12:23:36 by gwinnink      #+#    #+#                 */
-/*   Updated: 2023/01/11 15:46:41 by fpurdom       ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/10 12:23:36 by gwinnink          #+#    #+#             */
+/*   Updated: 2023/01/12 14:24:55 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,34 @@
 
 #define WIDTH 1000
 #define HEIGHT 1000
-#define DIST 1
 #define FOV 90
+
+t_vect3	cast_ray(t_scene scene, const double dist, double x, double y)
+{
+	const t_vect3	right = vect3_normalize(scene.camera.pos, vect3_add(scene.camera.pos, vect3(WIDTH / 2, 0, 0)));
+	const t_vect3	up = vect3_normalize(scene.camera.pos, vect3_add(scene.camera.pos, vect3(0, HEIGHT / 2, 0)));
+	t_vect3			p1;
+	t_vect3			p2;
+	// t_vect3			p3;
+	t_vect3			ret;
+
+	p1 = vect3_substract(vect3_add(scene.camera.pos, vect3_multiply(scene.camera.orient, dist)), vect3_multiply(right, WIDTH / 2));
+	// p3 = vect3_add(vect3_add(scene.camera.pos, vect3_multiply(scene.camera.orient, dist)), vect3_multiply(right, WIDTH / 2));
+	p2 = vect3_add(p1, vect3_multiply(right, x);
+	ret = vect3_add(p2, vect3_multiply(up, y);
+	// vect3_print(p1);
+	// vect3_print(p2);
+	// vect3_print(p3);
+	// vect3_print(ret);
+	// printf("\n");
+	return (ret);
+}
 
 int	main(void)
 {
 	mlx_t			*mlx;
 	t_scene			scene;
-	const double	step = DIST * tan(FOV / 2) / WIDTH / 2;
+	const double	dist = (WIDTH / 2) / tan((FOV / 2) * (M_PI / 180));
 	t_vect3			ray;
 	double 			t;
 	int				color;
@@ -37,14 +57,18 @@ int	main(void)
 	mlx = mlx_init(WIDTH, HEIGHT, "MiniReTweet", false);
 	img = mlx_new_image(mlx, WIDTH + 1, HEIGHT + 1);
 	init_scene(NULL, &scene);
-	for (double i = 0; i < HEIGHT ; i++)
+	printf("step = %f\n", 2 * dist * tan((FOV / 2) * (M_PI / 180)));
+	for (double y = 0; y < HEIGHT ; y++)
 	{
-		for (double j = 0; j < WIDTH; j++)
+		for (double x = 0; x < WIDTH; x++)
 		{
-			ray = vect3((j - WIDTH / 2) * step, (i - HEIGHT / 2) * step, DIST);
+			// ray = vect3_add(vect3((x - WIDTH / 2), (y - HEIGHT / 2), dist), scene.camera.pos);
+			// vect3_print(ray);
+			ray = cast_ray(scene, dist, x, y - HEIGHT / 2);
+			// vect3_print(ray);
 			t = -1;
 			color = get_collision(scene.camera.pos, ray, scene.objs, &t);
-			mlx_put_pixel(img, j, HEIGHT - i, color);
+			mlx_put_pixel(img, x, HEIGHT - y, color);
 		}
 	}
 	mlx_image_to_window(mlx, img, 0, 0);

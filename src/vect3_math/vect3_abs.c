@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_camera.c                                       :+:      :+:    :+:   */
+/*   vect3_abs.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 14:06:03 by fpurdom           #+#    #+#             */
-/*   Updated: 2023/01/12 13:18:50 by gwinnink         ###   ########.fr       */
+/*   Created: 2023/01/12 11:32:05 by gwinnink          #+#    #+#             */
+/*   Updated: 2023/01/12 11:39:33 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
+#include "vect3_math.h"
+#include <math.h>
 
-t_camera	new_camera(t_vect3 pos, t_vect3 orient, int fov)
+double	vect3_abs(t_vect3 vect)
 {
-	t_camera	camera;
-
-	camera.pos = pos;
-	camera.orient = vect3_normalize(vect3(0, 0, 0), orient);
-	camera.fov = fov;
-	return (camera);
+	return (sqrt(vect3_dot_product(vect, vect)));
 }

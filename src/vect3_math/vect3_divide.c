@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_camera.c                                       :+:      :+:    :+:   */
+/*   vect3_divide.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 14:06:03 by fpurdom           #+#    #+#             */
-/*   Updated: 2023/01/12 13:18:50 by gwinnink         ###   ########.fr       */
+/*   Created: 2023/01/12 11:36:55 by gwinnink          #+#    #+#             */
+/*   Updated: 2023/01/12 11:37:48 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
+#include "vect3_math.h"
 
-t_camera	new_camera(t_vect3 pos, t_vect3 orient, int fov)
+t_vect3	vect3_divide(t_vect3 vect, double s)
 {
-	t_camera	camera;
-
-	camera.pos = pos;
-	camera.orient = vect3_normalize(vect3(0, 0, 0), orient);
-	camera.fov = fov;
-	return (camera);
+	return (vect3(vect.x / s, vect.y / s, vect.z / s));
 }

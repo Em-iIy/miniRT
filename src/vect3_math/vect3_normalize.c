@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_camera.c                                       :+:      :+:    :+:   */
+/*   vect3_normalize.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 14:06:03 by fpurdom           #+#    #+#             */
-/*   Updated: 2023/01/12 13:18:50 by gwinnink         ###   ########.fr       */
+/*   Created: 2023/01/12 11:39:59 by gwinnink          #+#    #+#             */
+/*   Updated: 2023/01/12 11:45:24 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
+#include "vect3_math.h"
 
-t_camera	new_camera(t_vect3 pos, t_vect3 orient, int fov)
+/*
+returns the normalized vector with a lenght of 1
+(vect - origin)/absolute(vect - origin)
+*/
+t_vect3	vect3_normalize(t_vect3 origin, t_vect3 vect)
 {
-	t_camera	camera;
+	const t_vect3	diff = vect3_substract(vect, origin);
+	const double	magnitude = vect3_abs(diff);
 
-	camera.pos = pos;
-	camera.orient = vect3_normalize(vect3(0, 0, 0), orient);
-	camera.fov = fov;
-	return (camera);
+	return (vect3_divide(diff, magnitude));
 }
