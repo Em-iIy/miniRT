@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/10 12:23:36 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/01/12 15:25:34 by gwinnink         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   main.c                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/01/10 12:23:36 by gwinnink      #+#    #+#                 */
+/*   Updated: 2023/01/15 13:05:53 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 #define WIDTH 1000
 #define HEIGHT 1000
-#define FOV 150
+#define FOV 170
 #define DIST 1
 
 t_vect3	cast_ray(t_scene scene, const double dist, double x, double y)
@@ -45,19 +45,31 @@ t_vect3	cast_ray(t_scene scene, const double dist, double x, double y)
 	return (ret);
 }
 
+mlx_mousefunc	func(mouse_key_t button, action_t action, modifier_key_t mods, void *void_scene)
+{
+	t_scene	*scene;
+	int32_t	x, y;
+	t_vect3	ray;
+	const double	step = DIST * tan((FOV / 2) * (M_PI / 180)) / WIDTH / 2;
+
+	scene = (t_scene *)void_scene;
+	mlx_get_mouse_pos(scene->mlx, &x, &y);
+	ray = vect3((x - WIDTH / 2) * step, (y - HEIGHT / 2) * step, DIST);
+	printf("click\n");
+	get_collision(void_scene, ray);
+}
+
 int	main(void)
 {
-	mlx_t			*mlx;
 	t_scene			scene;
 	const double	dist = (WIDTH / 2) / tan(((FOV / 2) * (M_PI / 180)) * (M_PI / 180));
 	const double	step = DIST * tan((FOV / 2) * (M_PI / 180)) / WIDTH / 2;
 	t_vect3			ray;
-	double 			t;
 	int				color;
 	mlx_image_t		*img;
 
-	mlx = mlx_init(WIDTH, HEIGHT, "MiniReTweet", false);
-	img = mlx_new_image(mlx, WIDTH + 1, HEIGHT + 1);
+	scene.mlx = mlx_init(WIDTH, HEIGHT, "MiniReTweet", false);
+	img = mlx_new_image(scene.mlx, WIDTH + 1, HEIGHT + 1);
 	init_scene(NULL, &scene);
 	printf("step = %f\n",dist);
 	for (double y = 0; y < HEIGHT ; y++)
@@ -69,11 +81,11 @@ int	main(void)
 			// vect3_print(ray);
 			// ray = cast_ray(scene, dist, x, y - HEIGHT / 2);
 			// vect3_print(ray);
-			t = -1;
-			color = get_collision((void *)&scene, ray, &t);
-			mlx_put_pixel(img, x, HEIGHT - y, color);
+			color = get_collision((void *)&scene, ray);
+			mlx_put_pixel(img, x, y, color);
 		}
 	}
-	mlx_image_to_window(mlx, img, 0, 0);
-	mlx_loop(mlx);
+	mlx_mouse_hook(scene.mlx, &func, (void *)&scene);
+	mlx_image_to_window(scene.mlx, img, 0, 0);
+	mlx_loop(scene.mlx);
 }

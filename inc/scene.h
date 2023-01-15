@@ -6,7 +6,7 @@
 /*   By: fpurdom <fpurdom@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/11 13:23:16 by fpurdom       #+#    #+#                 */
-/*   Updated: 2023/01/11 19:20:45 by fpurdom       ########   odam.nl         */
+/*   Updated: 2023/01/12 18:37:18 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "objects.h"
 # include "vect3_math.h"
+# include "MLX42/MLX42.h"
 
 typedef struct s_amblight
 {
@@ -38,6 +39,7 @@ typedef struct s_light
 
 typedef struct s_scene
 {
+	mlx_t		*mlx;
 	t_amblight	amlight;
 	t_camera	camera;
 	t_light		light;
