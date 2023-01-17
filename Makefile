@@ -16,6 +16,7 @@ FILES_SRCS =	main.c \
 				quadratic_formula.c \
 				sphere.c \
 				plane.c \
+				ray.c \
 				object_utils.c \
 				objects.c \
 				init_scene.c \
