@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   scene.h                                            :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: fpurdom <fpurdom@student.codam.nl>           +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/01/11 13:23:16 by fpurdom       #+#    #+#                 */
-/*   Updated: 2023/01/12 18:37:18 by fpurdom       ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   scene.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/11 13:23:16 by fpurdom           #+#    #+#             */
+/*   Updated: 2023/01/17 13:57:24 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include "objects.h"
 # include "vect3_math.h"
 # include "MLX42/MLX42.h"
+
+# define WIDTH 1000
+# define HEIGHT 1000
 
 typedef struct s_amblight
 {
@@ -27,6 +30,9 @@ typedef struct s_camera
 {
 	t_vect3	pos;
 	t_vect3	orient;
+	t_vect3	right;
+	t_vect3	up;
+	double	dist;
 	int		fov;
 }	t_camera;
 
