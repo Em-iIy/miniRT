@@ -10,6 +10,7 @@ FILES_SRCS =	main.c \
 				vect3_divide.c \
 				vect3_print.c \
 				vect3_dot_product.c \
+				vect3_cross_product.c \
 				vect3_abs.c \
 				vect3_normalize.c \
 				quadratic_formula.c \
