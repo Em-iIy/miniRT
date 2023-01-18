@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   quadratic_formula.c                                :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/10 12:01:37 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/01/17 14:28:59 by gwinnink         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   quadratic_formula.c                                :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/01/10 12:01:37 by gwinnink      #+#    #+#                 */
+/*   Updated: 2023/01/18 16:44:20 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,5 @@ t_double_intersect	quadr_form(const double a, const double b, const double c)
 		return (create_return((-1 * b) / (2 * a), (-1 * b) / (2 * a)));
 	t1 = ((-1 * b) - sqrt(discr)) / (2 * a);
 	t2 = ((-1 * b) + sqrt(discr)) / (2 * a);
-	if (t1 > 0 && (t1 < t2 || t2 < 0))
-		return (create_return(t1, t2));
-	else if (t2 > 0 && (t2 < t1 || t1 < 0))
-		return (create_return(t2, t1));
-	return (create_return(0, 0));
+	return (create_return(t1, t2));
 }

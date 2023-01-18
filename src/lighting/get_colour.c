@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_colour.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 13:37:29 by fpurdom           #+#    #+#             */
-/*   Updated: 2023/01/17 17:54:56 by gwinnink         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   get_colour.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/01/11 13:37:29 by fpurdom       #+#    #+#                 */
+/*   Updated: 2023/01/18 16:58:27 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	get_rgba(int r, int g, int b, int a)
 	return (r << 24 | g << 16 | b << 8 | a);
 }
 
-int	get_shadow(int rgba, double intensity)
+static int	get_shadow(int rgba, double intensity)
 {
 	return (get_rgba((rgba >> 24) * intensity, (rgba >> 16) * intensity, (rgba >> 8) * intensity, 255));
 }
@@ -43,7 +43,7 @@ int	get_pixel_colour(t_vect3 ray, t_scene *scene, int colour, double t)
 		{
 			sphere_intersect = sphere_collision(start, vect3_normalize(start, scene->light.pos), objs->coords, objs->radius);
 			//printf("colides here %f and here %f\n", sphere_intersect.close, sphere_intersect.far);
-			if (sphere_intersect.close > 0 && sphere_intersect.far > 0)
+			if (sphere_intersect.close > 0.0001 || sphere_intersect.far > 0.0001)
 				colides = 1;
 			else
 				colides = -1;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/10 12:23:36 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/01/17 15:28:33 by gwinnink         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   main.c                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/01/10 12:23:36 by gwinnink      #+#    #+#                 */
+/*   Updated: 2023/01/18 13:55:31 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ mlx_mousefunc	func(mouse_key_t button, action_t action, modifier_key_t mods, voi
 	// ray = vect3((x - WIDTH / 2) * step, (y - HEIGHT / 2) * step, DIST);
 	// vect3_print(vect3_normalize(vect3(0, 0, 0), ray));
 	ray = cast_ray(*scene, x, y - HEIGHT / 2);
-	vect3_print(ray);
+	//vect3_print(ray);
 	get_collision(void_scene, ray);
 }
 

@@ -57,7 +57,7 @@ MLX = $(DIR_MLX)/libmlx42.a
 
 # ----------------------------------------Debug
 ifdef WITH_ADDRESS
-CFLAGS += -g -fsanitize=address
+CFLAGS += -g -fsanitize=undefined
 endif
 
 

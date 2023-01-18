@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/10 14:48:51 by gwinnink      #+#    #+#                 */
-/*   Updated: 2023/01/13 19:19:58 by fpurdom       ########   odam.nl         */
+/*   Updated: 2023/01/18 16:54:58 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,12 @@ t_object	*obj_cy(t_object *obj, t_vect3 orientation, \
 
 int	get_collision(void *void_scene, t_vect3 ray)
 {
-	t_object	*objs;
-	t_scene		*scene;
-	double		temp;
-	double		t;
-	int			colour;
+	t_object			*objs;
+	t_scene				*scene;
+	t_double_intersect	temp;
+	double				t;
+	double				temp_t;
+	int					colour;
 
 	colour = 255;
 	scene = (t_scene *)void_scene;
@@ -55,13 +56,17 @@ int	get_collision(void *void_scene, t_vect3 ray)
 	while (objs)
 	{
 		if (objs->type == SPHERE)
-			temp = sphere_collision(scene->camera.pos, ray, objs->coords, objs->radius).close;
+			temp = sphere_collision(scene->camera.pos, ray, objs->coords, objs->radius);
 		else if (objs->type == PLANE)
 			temp = plane_collision(scene->camera.pos, ray, objs->coords, objs->orientation);
-		if (temp > 0 && (t < 0 || temp < t))
+		if (temp.close < temp.far)
+			temp_t = temp.close;
+		else
+			temp_t = temp.far;
+		if (temp.close > 0 && (t < 0 || temp.close < t))
 		{
 			colour = objs->color;
-			t = temp;
+			t = temp.close;
 		}
 		objs = objs->next;
 	}
