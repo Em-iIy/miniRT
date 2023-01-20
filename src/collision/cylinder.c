@@ -6,7 +6,7 @@
 /*   By: fpurdom <fpurdom@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/20 17:43:46 by fpurdom       #+#    #+#                 */
-/*   Updated: 2023/01/20 20:03:29 by fpurdom       ########   odam.nl         */
+/*   Updated: 2023/01/20 20:05:09 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,5 @@ t_double_intersect	cylinder_collision(t_vect3 ray, t_vect3 cam_pos, t_object cyl
 	t_double_intersect	intersects;
 
 	intersects = quadr_form(a, b ,c);
-	return (create_return());
+	return (intersects);
 }
