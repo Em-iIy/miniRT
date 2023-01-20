@@ -6,22 +6,13 @@
 /*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/10 12:01:37 by gwinnink      #+#    #+#                 */
-/*   Updated: 2023/01/18 16:44:20 by fpurdom       ########   odam.nl         */
+/*   Updated: 2023/01/20 19:13:47 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include <stdbool.h>
-#include "vect3_math.h"
-
-static t_double_intersect	create_return(double close, double far)
-{
-	t_double_intersect	ret;
-
-	ret.close = close;
-	ret.far = far;
-	return (ret);
-}
+#include "objects.h"
 
 t_double_intersect	quadr_form(const double a, const double b, const double c)
 {
