@@ -6,14 +6,14 @@
 /*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/10 14:48:51 by gwinnink      #+#    #+#                 */
-/*   Updated: 2023/01/19 16:54:19 by fpurdom       ########   odam.nl         */
+/*   Updated: 2023/01/19 19:25:15 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "objects.h"
 #include "vect3_math.h"
 #include "scene.h"
-#include "get_colour.h"
+#include "colour.h"
 #include <stdlib.h>
 
 t_object	*obj_sp(t_object *obj, double radius)
@@ -43,6 +43,7 @@ t_object	*obj_cy(t_object *obj, t_vect3 orientation, \
 int	get_collision(void *void_scene, t_vect3 ray)
 {
 	t_object			*objs;
+	t_object			*saved_obj;
 	t_scene				*scene;
 	t_double_intersect	temp;
 	double				t;
@@ -67,10 +68,11 @@ int	get_collision(void *void_scene, t_vect3 ray)
 		{
 			colour = objs->color;
 			t = temp.close;
+			saved_obj = objs;
 		}
 		objs = objs->next;
 	}
 	if (t < 0)
 		return (255);
-	return (get_pixel_colour(ray, scene, colour, t));
+	return (get_pixel_colour(ray, scene, saved_obj, t));
 }
