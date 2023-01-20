@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/10 14:48:51 by gwinnink      #+#    #+#                 */
-/*   Updated: 2023/01/20 19:00:17 by fpurdom       ########   odam.nl         */
+/*   Updated: 2023/01/20 19:50:39 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ t_object	*obj_cy(t_object *obj, t_vect3 orientation, \
 	obj->orientation = orientation;
 	obj->lenght = length;
 	obj->diameter = diameter;
+	obj->radius = diameter / 2;
 	return (obj);
 }
 
@@ -60,6 +61,8 @@ int	get_collision(void *void_scene, t_vect3 ray)
 			temp = sphere_collision(scene->camera.pos, ray, objs->coords, objs->radius);
 		else if (objs->type == PLANE)
 			temp = plane_collision(scene->camera.pos, ray, objs->coords, objs->orientation);
+		else if (objs->type == CYLINDER)
+			temp = cylinder_collision(ray, scene->camera.pos, *objs);
 		if (temp.t1 < temp.t2)
 			temp_t = temp.t1;
 		else

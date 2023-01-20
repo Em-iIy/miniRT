@@ -6,7 +6,7 @@
 /*   By: fpurdom <fpurdom@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/20 17:43:46 by fpurdom       #+#    #+#                 */
-/*   Updated: 2023/01/20 18:26:17 by fpurdom       ########   odam.nl         */
+/*   Updated: 2023/01/20 20:03:29 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,20 @@ x = subtraction(camera_coords, cylinder_coords)
 
 a = dot_product(ray, ray) - dot_product(ray, cylinder_dir)
 
-b = 2 * do_product(ray, x)
+b = 2 * (do_product(ray, x) - dot_product(ray, cylinder_dir) * dot_product(x, cylinder_dir)
 
 c = dot_product(x, x) - dot_product(x, cylinder_dir)^2 - radius^2
 
 */
 
-t_double_intersect	cylinder_collision(t_vect3 ray, t_vect3 cam, t_object cylinder)
+t_double_intersect	cylinder_collision(t_vect3 ray, t_vect3 cam_pos, t_object cylinder)
 {
-	const t_vect3	x = vect3_substract(cam, cylinder.coords);
+	const t_vect3		x = vect3_substract(cam_pos, cylinder.coords);
+	const double		a = vect3_dot_product(ray, ray) - pow(vect3_dot_product(ray, cylinder.orientation), 2);
+	const double		b = 2 * (vect3_dot_product(ray, x) - vect3_dot_product(ray, cylinder.orientation) * vect3_dot_product(x, cylinder.orientation));
+	const double		c = vect3_dot_product(x, x) - pow(vect3_dot_product(x, cylinder.orientation), 2) - pow(cylinder.radius, 2);
+	t_double_intersect	intersects;
 
-	return (quadr_form(vect3_dot_product(x, x), 2 * vect3_dot_product(ray, x), vect3_dot_product(x, x) - pow(vect3_dot_product(x, cylinder.orientation), 2) - pow(cylinder.radius, 2)));
+	intersects = quadr_form(a, b ,c);
+	return (create_return());
 }

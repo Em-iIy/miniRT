@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/11 13:37:29 by fpurdom       #+#    #+#                 */
-/*   Updated: 2023/01/20 19:17:03 by fpurdom       ########   odam.nl         */
+/*   Updated: 2023/01/20 20:00:12 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ int	get_pixel_colour(t_vect3 ray, t_scene *scene, t_object *saved_obj, double t)
 			intersects = sphere_collision(start, vect3_normalize(start, scene->light.pos), objs->coords, objs->radius);
 		else if (objs->type == PLANE)
 			intersects = plane_collision(start, scene->light.pos, objs->coords, objs->orientation);
+		else if (objs->type == CYLINDER)
+			intersects = cylinder_collision(ray, scene->camera.pos, *objs);
 		if ((intersects.t1 > 0.00000001 || intersects.t2 > 0.00000001) && (intersects.t1 < dist || intersects.t2 < dist))
 			return (shadow);
 		objs = objs->next;

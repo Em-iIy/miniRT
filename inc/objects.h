@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/10 14:37:49 by gwinnink      #+#    #+#                 */
-/*   Updated: 2023/01/20 19:14:59 by fpurdom       ########   odam.nl         */
+/*   Updated: 2023/01/20 19:58:17 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_double_intersect		quadr_form(const double a, const double b, const double c);
 int						get_collision(void *void_scene, t_vect3 ray);
 t_double_intersect		sphere_collision(t_vect3 o, t_vect3 d, t_vect3 c, double r);
 t_double_intersect		plane_collision(t_vect3 r_o, t_vect3 d, t_vect3 p_o, t_vect3 n);
-t_double_intersect		cylinder_collision(t_vect3 ray, t_vect3 cam, t_object cylinder);
+t_double_intersect		cylinder_collision(t_vect3 ray, t_vect3 cam_pos, t_object cylinder);
 
 t_object	*obj_sp(t_object *obj, double radius);
 t_object	*obj_pl(t_object *obj, t_vect3 orientation);
