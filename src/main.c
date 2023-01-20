@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/10 12:23:36 by gwinnink      #+#    #+#                 */
-/*   Updated: 2023/01/18 13:55:31 by fpurdom       ########   odam.nl         */
+/*   Updated: 2023/01/20 18:59:36 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	main(void)
 		{
 			// ray = vect3_add(vect3((x - WIDTH / 2), (y - HEIGHT / 2), dist), scene.camera.pos);
 			// ray = vect3((x - WIDTH / 2) * step, (y - HEIGHT / 2) * step, DIST);
-			ray = cast_ray(scene, x, y - HEIGHT / 2);
+			ray = cast_ray(scene, x, HEIGHT / 2 - y);
 			color = get_collision((void *)&scene, ray);
 			mlx_put_pixel(img, x, y, color);
 		}

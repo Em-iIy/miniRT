@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   vect3_math.h                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/10 12:03:57 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/01/17 13:26:56 by gwinnink         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   vect3_math.h                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/01/10 12:03:57 by gwinnink      #+#    #+#                 */
+/*   Updated: 2023/01/20 18:59:18 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ typedef struct s_vect3
 
 typedef struct s_double_intersect
 {
-	double	close;
-	double	far;
+	double	t1;
+	double	t2;
 }	t_double_intersect;
 
 t_vect3	vect3(double x, double y, double z);

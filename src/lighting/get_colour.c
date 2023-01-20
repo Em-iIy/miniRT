@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/11 13:37:29 by fpurdom       #+#    #+#                 */
-/*   Updated: 2023/01/19 19:25:43 by fpurdom       ########   odam.nl         */
+/*   Updated: 2023/01/20 19:09:25 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static int	get_light(t_vect3 light_dir, t_vect3 pixel_dir, int colour, int shado
 
 int	get_pixel_colour(t_vect3 ray, t_scene *scene, t_object *saved_obj, double t)
 {
-	t_double_intersect	sphere_intersect;
+	t_double_intersect	intersects;
 	t_vect3				start;
 	t_vect3				normal;
 	t_object			*objs;
@@ -71,23 +71,17 @@ int	get_pixel_colour(t_vect3 ray, t_scene *scene, t_object *saved_obj, double t)
 	start = vect3_add(scene->camera.pos, vect3_multiply(ray, t));
 	dist = vect3_abs(vect3_substract(start, scene->light.pos));
 	shadow = get_shadow(saved_obj->color, scene->amlight.brightness);
-	normal = vect3_normalize(saved_obj->coords, start);
-	//printf("t = %f\t", t);
-	//vect3_print(start);
+	if (saved_obj->type == SPHERE)
+		normal = vect3_normalize(saved_obj->coords, start);
+	else if (saved_obj->type == PLANE)
+		normal = saved_obj->orientation;
 	while (objs)
 	{
 		if (objs->type == SPHERE)
-		{
-			sphere_intersect = sphere_collision(start, vect3_normalize(start, scene->light.pos), objs->coords, objs->radius);
-			//printf("colides here %f and here %f\n", sphere_intersect.close, sphere_intersect.far);
-			if ((sphere_intersect.close > 0.00000001 || sphere_intersect.far > 0.00000001) && (sphere_intersect.close < dist || sphere_intersect.far < dist))
-				colides = 1;
-			else
-				colides = -1;
-		}
-		//else if (objs->type == PLANE)
-			//colides = plane_collision(start, scene->light.pos, objs->coords, objs->orientation);
-		if (colides > 0)
+			intersects = sphere_collision(start, vect3_normalize(start, scene->light.pos), objs->coords, objs->radius);
+		else if (objs->type == PLANE)
+			intersects = plane_collision(start, scene->light.pos, objs->coords, objs->orientation);
+		if ((intersects.t1 > 0.00000001 || intersects.t2 > 0.00000001) && (intersects.t1 < dist || intersects.t2 < dist))
 			return (shadow);
 		objs = objs->next;
 	}

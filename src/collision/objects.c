@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/10 14:48:51 by gwinnink      #+#    #+#                 */
-/*   Updated: 2023/01/19 19:25:15 by fpurdom       ########   odam.nl         */
+/*   Updated: 2023/01/20 19:00:17 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,14 @@ int	get_collision(void *void_scene, t_vect3 ray)
 			temp = sphere_collision(scene->camera.pos, ray, objs->coords, objs->radius);
 		else if (objs->type == PLANE)
 			temp = plane_collision(scene->camera.pos, ray, objs->coords, objs->orientation);
-		if (temp.close < temp.far)
-			temp_t = temp.close;
+		if (temp.t1 < temp.t2)
+			temp_t = temp.t1;
 		else
-			temp_t = temp.far;
-		if (temp.close > 0 && (t < 0 || temp.close < t))
+			temp_t = temp.t2;
+		if (temp_t > 0 && (t < 0 || temp_t < t))
 		{
 			colour = objs->color;
-			t = temp.close;
+			t = temp_t;
 			saved_obj = objs;
 		}
 		objs = objs->next;
