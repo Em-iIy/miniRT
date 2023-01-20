@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 13:45:03 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/01/20 12:57:14 by gwinnink         ###   ########.fr       */
+/*   Updated: 2023/01/20 14:01:04 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int			ft_isprint(int c);
 int			ft_isspace(int c);
 void		*ft_memset(void *b, int c, size_t len);
 size_t		ft_strlen(const char *s);
+double		ft_atod(const char *str);
 int			ft_atoi(const char *str);
 void		*ft_memcpy(void *dst, const void *src, size_t n);
 int			ft_tolower(int c);
