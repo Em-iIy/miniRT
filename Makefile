@@ -87,12 +87,12 @@ address:
 clean:
 	make -C $(DIR_LIBFT) clean
 	make -C $(DIR_MLX) clean
-	rm -f $(OBJS)
+	@rm -f $(OBJS)
 
 fclean: clean
 	make -C $(DIR_LIBFT) fclean
 	make -C $(DIR_MLX) fclean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 
