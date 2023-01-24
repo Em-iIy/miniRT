@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 12:00:17 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/01/10 12:00:18 by gwinnink         ###   ########.fr       */
+/*   Updated: 2023/01/24 16:13:59 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 double	vect3_dot_product(t_vect3 a, t_vect3 b)
 {
-	return (a.x * b.x + a.y * b.y + a.z * b.z);
+	return (a[0] * b[0] + a[1] * b[1] + a[2] * b[2]);
 }

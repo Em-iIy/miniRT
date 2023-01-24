@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   get_colour.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/01/11 13:37:29 by fpurdom       #+#    #+#                 */
-/*   Updated: 2023/01/20 20:00:12 by fpurdom       ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   get_colour.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/11 13:37:29 by fpurdom           #+#    #+#             */
+/*   Updated: 2023/01/24 16:01:35 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,17 @@ int	get_rgba(int r, int g, int b, int a)
 
 static t_vect3	give_rgba(int colour)
 {
-	t_vect3	colours;
+	// t_vect3	colours;
 
-	colours.x = colour >> 24 & 255;
-	colours.y = colour >> 16 & 255;
-	colours.z = colour >> 8 & 255;
-	return (colours);
+	// colours.x = colour >> 24 & 255;
+	// colours.y = colour >> 16 & 255;
+	// colours.z = colour >> 8 & 255;
+	// return (colours);
+	return ((t_vect3){
+		colour >> 24 & 255,
+		colour >> 16 & 255,
+		colour >> 8 & 255
+	});
 }
 
 static int	get_shadow(int rgba, double intensity)
@@ -43,17 +48,17 @@ static int	get_light(t_vect3 light_dir, t_vect3 pixel_dir, int colour, int shado
 	t_vect3	ret;
 
 	d = vect3_dot_product(pixel_dir, light_dir);
-	rgba = vect3_multiply(give_rgba(colour), d);
-	ret.x = sqrt((pow(rgba.x, 2) + pow(shadow >> 24 & 255, 2)) / 2);
-	if (ret.x < (shadow >> 24 & 255))
-		ret.x = shadow >> 24 & 255;
-	ret.y = sqrt((pow(rgba.y, 2) + pow(shadow >> 16 & 255, 2)) / 2);
-	if (ret.y < (shadow >> 16 & 255))
-		ret.y = shadow >> 16 & 255;
-	ret.z = sqrt((pow(rgba.z, 2) + pow(shadow >> 8 & 255, 2)) / 2);
-	if (ret.z < (shadow >> 8 & 255))
-		ret.z = shadow >> 8 & 255;
-	return (get_rgba(ret.x, ret.y, ret.z, 255));
+	rgba = give_rgba(colour) * d;
+	ret[0] = sqrt((pow(rgba[0], 2) + pow(shadow >> 24 & 255, 2)) / 2);
+	if (ret[0] < (shadow >> 24 & 255))
+		ret[0] = shadow >> 24 & 255;
+	ret[1] = sqrt((pow(rgba[1], 2) + pow(shadow >> 16 & 255, 2)) / 2);
+	if (ret[1] < (shadow >> 16 & 255))
+		ret[1] = shadow >> 16 & 255;
+	ret[2] = sqrt((pow(rgba[2], 2) + pow(shadow >> 8 & 255, 2)) / 2);
+	if (ret[2] < (shadow >> 8 & 255))
+		ret[2] = shadow >> 8 & 255;
+	return (get_rgba(ret[0], ret[1], ret[2], 255));
 }
 
 int	get_pixel_colour(t_vect3 ray, t_scene *scene, t_object *saved_obj, double t)
@@ -66,8 +71,8 @@ int	get_pixel_colour(t_vect3 ray, t_scene *scene, t_object *saved_obj, double t)
 	int					shadow;
 
 	objs = scene->objs;
-	start = vect3_add(scene->camera.pos, vect3_multiply(ray, t));
-	dist = vect3_abs(vect3_substract(start, scene->light.pos));
+	start = scene->camera.pos + ray * t;
+	dist = vect3_abs(start - scene->light.pos);
 	shadow = get_shadow(saved_obj->color, scene->amlight.brightness);
 	if (saved_obj->type == SPHERE)
 		normal = vect3_normalize(saved_obj->coords, start);
