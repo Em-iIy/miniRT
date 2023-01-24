@@ -4,10 +4,6 @@ NAME = minirt
 # ----------------------------------------FILES
 FILES_SRCS =	main.c \
 				vect3.c \
-				vect3_add.c \
-				vect3_substract.c \
-				vect3_multiply.c \
-				vect3_divide.c \
 				vect3_print.c \
 				vect3_dot_product.c \
 				vect3_cross_product.c \
@@ -49,7 +45,8 @@ OBJS = $(FILES_OBJS:%=$(DIR_OBJS)%)
 # ----------------------------------------Flags
 CC = gcc
 # CFLAGS = -Wall -Wextra -Werror
-MLXFLAGS = -I $(DIR_MLX)/include -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
+MLXFLAGS = -I $(DIR_MLX)/include
+# MLXFLAGS += -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
 INC = -Iinc -I$(DIR_LIBFT) $(MLXFLAGS)
 
 # ----------------------------------------Libraries
@@ -67,7 +64,7 @@ all:
 	@$(MAKE) $(NAME) -j4
 
 $(NAME): $(DIR_OBJS) $(OBJS) $(LIBFT) $(MLX)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -lm $(INC) $(LIBFT) $(MLX)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -lm $(INC) $(LIBFT) $(MLX) -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
 
 $(DIR_OBJS)%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@ $(INC)
