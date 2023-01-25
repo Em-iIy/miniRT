@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   objects.c                                          :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/01/10 14:48:51 by gwinnink      #+#    #+#                 */
-/*   Updated: 2023/01/20 19:50:39 by fpurdom       ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   objects.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/10 14:48:51 by gwinnink          #+#    #+#             */
+/*   Updated: 2023/01/25 19:47:38 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 #include "colour.h"
 #include <stdlib.h>
 
-t_object	*obj_sp(t_object *obj, double radius)
+t_object	*obj_sp(t_object *obj, double diameter)
 {
 	obj->type = SPHERE;
-	obj->radius = radius;
+	obj->radius = diameter / 2;
 	return (obj);
 }
 

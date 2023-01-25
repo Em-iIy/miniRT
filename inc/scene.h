@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 13:23:16 by fpurdom           #+#    #+#             */
-/*   Updated: 2023/01/17 13:57:24 by gwinnink         ###   ########.fr       */
+/*   Updated: 2023/01/25 17:06:02 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,16 @@
 # include "objects.h"
 # include "vect3_math.h"
 # include "MLX42/MLX42.h"
+# include <stdbool.h>
 
 # define WIDTH 1000
 # define HEIGHT 1000
 
 typedef struct s_amblight
 {
-	float	brightness;
+	double	brightness;
 	int		colour;
+	bool	set;
 }	t_amblight;
 
 typedef struct s_camera
@@ -34,13 +36,15 @@ typedef struct s_camera
 	t_vect3	up;
 	double	dist;
 	int		fov;
+	bool	set;
 }	t_camera;
 
 typedef struct s_light
 {
 	t_vect3	pos;
-	float	brightness;
+	double	brightness;
 	int		colour;
+	bool	set;
 }	t_light;
 
 typedef struct s_scene
