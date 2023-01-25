@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   sphere.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/10 12:00:08 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/01/24 16:00:35 by gwinnink         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   sphere.c                                           :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/01/10 12:00:08 by gwinnink      #+#    #+#                 */
+/*   Updated: 2023/01/25 16:35:13 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 a = d^2 = 		vect3_dot_product(d, d)
 b = 2vd =		2 * vect3_dot_product(v, d)
 c = v^2-r^2 = 	vect3_dot_product(v, v) - r * r
+
+sphere_collision(scene->camera.pos(o), ray(d), objs->pos(c), objs->radius(r));
 */
 t_double_intersect	sphere_collision(t_vect3 o, t_vect3 d, t_vect3 c, double r)
 {

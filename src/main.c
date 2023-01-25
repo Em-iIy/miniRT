@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/10 12:23:36 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/01/24 18:18:31 by gwinnink         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   main.c                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/01/10 12:23:36 by gwinnink      #+#    #+#                 */
+/*   Updated: 2023/01/25 12:57:10 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	func(mouse_key_t button, action_t action, modifier_key_t mods, void *void_s
 	scene = (t_scene *)void_scene;
 	mlx_get_mouse_pos(scene->mlx, &x, &y);
 	printf("click (%d, %d)\n", x, y);
-	ray = cast_ray(*scene, x, y - HEIGHT / 2);
+	ray = cast_ray(*scene, x, HEIGHT / 2 - y);
 	get_collision(void_scene, ray);
 }
 
