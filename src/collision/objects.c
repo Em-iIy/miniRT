@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/10 14:48:51 by gwinnink      #+#    #+#                 */
-/*   Updated: 2023/01/26 15:10:45 by fpurdom       ########   odam.nl         */
+/*   Updated: 2023/01/26 15:59:06 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,13 @@ void	obj_cy(t_object **objs, t_vect3 orientation, \
 
 	*objs = obj_cylinder(*objs, orientation, length, diameter);
 	temp = obj_new((*objs)->pos, (*objs)->color);
+	//temp = obj_new((*objs)->pos, 0x00FF00FF);
 	temp->type = CIRCLE;
 	temp->radius = diameter / 2;
 	temp->orient = orientation * -1;
 	obj_add_front(objs, temp);
 	temp = obj_new((*objs)->pos + orientation * length, (*objs)->color);
+	//temp = obj_new((*objs)->pos + orientation * length, 0x00FF00FF);
 	temp->type = CIRCLE;
 	temp->radius = diameter / 2;
 	temp->orient = orientation;
@@ -85,7 +87,7 @@ int	get_collision(void *void_scene, t_vect3 ray)
 			temp = cyl_collision(ray, scene->camera.pos, objs);
 		else if (objs->type == CIRCLE)
 			temp = circle_collision(ray, scene->camera.pos, objs);
-		if (temp.t1 < temp.t2)
+		if (temp.t1 > 0 && (temp.t2 < 0 || temp.t1 < temp.t2))
 			temp_t = temp.t1;
 		else
 			temp_t = temp.t2;
@@ -97,6 +99,7 @@ int	get_collision(void *void_scene, t_vect3 ray)
 		}
 		objs = objs->next;
 	}
+	//printf("found t: %f\n", t);
 	if (t < 0)
 		return (255);
 	return (get_pixel_colour(ray, scene, saved_obj, t));

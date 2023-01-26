@@ -34,9 +34,20 @@ t_double_intersect	cyl_collision(t_vect3 ray, t_vect3 pos, t_object *cyl)
 	t_double_intersect	m;
 
 	tube = quadr_form(vect3_dot_product(ray, ray) - pow(vect3_dot_product(ray, cyl->orient), 2), 2 * (vect3_dot_product(ray, x) - vect3_dot_product(ray, cyl->orient) * vect3_dot_product(x, cyl->orient)), vect3_dot_product(x, x) - pow(vect3_dot_product(x, cyl->orient), 2) - pow(cyl->radius, 2));
-	m.t1 = vect3_dot_product(ray, cyl->orient * tube.t1) + vect3_dot_product(x, cyl->orient);
-	m.t2 = vect3_dot_product(ray, cyl->orient * tube.t2) + vect3_dot_product(x, cyl->orient);
-	if ((m.t1 < 0 && m.t2 < 0) || (m.t1 > cyl->lenght && m.t2 > cyl->lenght))
-		return (create_return(-1, -1));
+	if (tube.t1)
+	{
+		m.t1 = vect3_dot_product(ray, cyl->orient * tube.t1) + vect3_dot_product(x, cyl->orient);
+		if (m.t1 < 0 || m.t1 > cyl->lenght)
+			tube.t1 = -1;
+	}
+	if (tube.t2)
+	{
+		m.t2 = vect3_dot_product(ray, cyl->orient * tube.t2) + vect3_dot_product(x, cyl->orient);
+		if (m.t2 < 0 || m.t2 > cyl->lenght)
+			tube.t2 = -1;
+	}
+	// m.t2 = vect3_dot_product(ray, cyl->orient * tube.t2) + vect3_dot_product(x, cyl->orient);
+	// if (m.t1 < 0 || m.t1 > cyl->lenght || (m.t2 < 0 || m.t2 > cyl->lenght))
+	// 	return (create_return(-1, -1));
 	return (tube);
 }

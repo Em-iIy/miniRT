@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/10 12:23:36 by gwinnink      #+#    #+#                 */
-/*   Updated: 2023/01/26 12:01:05 by fpurdom       ########   odam.nl         */
+/*   Updated: 2023/01/26 15:11:52 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "scene.h"
 #include "libft.h"
 #include "parse.h"
+#include "error.h"
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>

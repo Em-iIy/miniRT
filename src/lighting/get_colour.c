@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/11 13:37:29 by fpurdom       #+#    #+#                 */
-/*   Updated: 2023/01/26 15:09:04 by fpurdom       ########   odam.nl         */
+/*   Updated: 2023/01/26 16:53:54 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,9 @@ static t_vect3	get_normal(t_vect3 start, t_object *saved_obj)
 {
 	if (saved_obj->type == SPHERE)
 		return (vect3_normalize(saved_obj->pos, start));
-	else if (saved_obj->type == PLANE || saved_obj->type == CIRCLE)
-		return (saved_obj->orient);
-	else if (saved_obj->type == CYLINDER)
-		return (vect3_normalize(saved_obj->pos + (vect3_dot_product(start -
-				saved_obj->pos, saved_obj->orient) * saved_obj->orient), start));
-	return (vect3_0());
+	if (saved_obj->type == CYLINDER)
+		return (vect3_normalize(saved_obj->pos + (vect3_dot_product(start - saved_obj->pos, saved_obj->orient) * saved_obj->orient), start));
+	return (saved_obj->orient);
 }
 
 int	get_pixel_colour(t_vect3 ray, t_scene *scene, t_object *saved_obj, double t)
@@ -81,6 +78,8 @@ int	get_pixel_colour(t_vect3 ray, t_scene *scene, t_object *saved_obj, double t)
 	t_double_intersect	intersects;
 	t_object			*objs;
 
+	// vect3_print("start", start);
+	// printf("\n");
 	objs = scene->objs;
 	while (objs)
 	{
@@ -89,7 +88,10 @@ int	get_pixel_colour(t_vect3 ray, t_scene *scene, t_object *saved_obj, double t)
 		else if (objs->type == PLANE)
 			intersects = plane_collision(start, scene->light.pos, objs->pos, objs->orient);
 		else if (objs->type == CYLINDER)
-			intersects = cyl_collision(scene->light.pos, start, objs);
+		{
+			intersects = cyl_collision(vect3_normalize(start, scene->light.pos), start, objs);
+			//printf("t1: %f\tt2: %f\n", intersects.t1, intersects.t2);
+		}
 		else if (objs->type == CIRCLE)
 			intersects = circle_collision(scene->light.pos, start, objs);
 		if ((intersects.t1 > 0.00000001 || intersects.t2 > 0.00000001) && (intersects.t1 < dist || intersects.t2 < dist))
