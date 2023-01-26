@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/10 14:48:51 by gwinnink      #+#    #+#                 */
-/*   Updated: 2023/01/25 19:55:28 by fpurdom       ########   odam.nl         */
+/*   Updated: 2023/01/26 12:00:30 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 #include "colour.h"
 #include <stdlib.h>
 
-t_object	*obj_sp(t_object *obj, double radius)
+t_object	*obj_sp(t_object *obj, double diameter)
 {
 	obj->type = SPHERE;
-	obj->radius = radius;
+	obj->radius = diameter / 2;
 	return (obj);
 }
 

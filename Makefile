@@ -3,6 +3,7 @@ NAME = minirt
 
 # ----------------------------------------FILES
 FILES_SRCS =	main.c \
+				error.c \
 				vect3.c \
 				vect3_print.c \
 				vect3_dot_product.c \
@@ -20,6 +21,13 @@ FILES_SRCS =	main.c \
 				add_camera.c \
 				add_lights.c \
 				get_colour.c \
+				parse_rgb.c \
+				parse_atod.c \
+				parse_coords.c \
+				parse_direction.c \
+				parse_object.c \
+				parse_line.c \
+				parse_file_name.c \
 
 FILES_OBJS = $(FILES_SRCS:.c=.o)
 
@@ -55,7 +63,7 @@ MLX = $(DIR_MLX)/libmlx42.a
 
 # ----------------------------------------Debug
 ifdef WITH_ADDRESS
-CFLAGS += -g -fsanitize=undefined
+CFLAGS += -g -fsanitize=address
 endif
 
 
