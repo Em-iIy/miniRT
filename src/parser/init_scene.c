@@ -6,31 +6,33 @@
 /*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 13:40:07 by fpurdom           #+#    #+#             */
-/*   Updated: 2023/01/24 16:08:52 by gwinnink         ###   ########.fr       */
+/*   Updated: 2023/01/26 11:03:33 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene_elements.h"
-#include "colour.h"
+#include "libft.h"
+#include "error.h"
+#include "parse.h"
 #include <stdlib.h>
-
-void	test_scene(t_scene *scene)
-{
-	scene->objs = NULL;
-	obj_add_front(&scene->objs, obj_sp(obj_new(vect3(-2, 0, 2), get_rgba(255, 0, 0, 255)), 1));
-	obj_add_front(&scene->objs, obj_sp(obj_new(vect3(0, 0, 2), get_rgba(255, 255, 0, 255)), 1));
-	// obj_add_front(&scene->objs, obj_sp(obj_new(vect3(0, 0, 2), get_rgba(255, 255, 0, 255)), 1000));
-	obj_add_front(&scene->objs, obj_sp(obj_new(vect3(2, 0, 2), get_rgba(0, 0, 255, 255)), 1));
-	// obj_add_front(&scene->objs, obj_cy(obj_new(vect3(2, 0, 2), get_rgba(255, 0, 0, 255)), vect3(0, 1, 0), 2, 2));
-	obj_add_front(&scene->objs, obj_pl(obj_new(vect3(0, -2, 4), get_rgba(120, 100, 100, 255)), vect3(0, 1, 0)));
-	obj_add_front(&scene->objs, obj_pl(obj_new(vect3(-5, 0, 0), get_rgba(120, 100, 100, 255)), vect3(1, 0, 0)));
-	scene->camera = new_camera(vect3(0, 2, -5), vect3(0, -0.3, 1), 90);
-	scene->light = new_light(vect3(5, 5, -1.5), 0.5, 0xFFFFFFFF);
-	scene->amlight = new_amblight(0.1, 0xFFFFFFFF);
-}
+#include <unistd.h>
 
 void	init_scene(char	*infile, t_scene *scene)
 {
-	test_scene(scene);
-	(void)infile;
+	const int	fd = parse_file_name(infile);
+	char		*line;
+
+	if (fd < 0)
+		error_msg_exit("Filename error: how you get here lol\n", EXIT_FAILURE);
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (!line)
+			break ;
+		if (*line != '\n' && *line != '#')
+			parse_line(scene, ft_strtrim(line, "\n"));
+		free(line);
+	}
+	close(fd);
+	if (!scene->camera.set || !scene->amlight.set || !scene->light.set)
+		error_msg_exit("scene error: missing camera or lights\n", EXIT_FAILURE);
 }

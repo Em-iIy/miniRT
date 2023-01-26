@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 12:23:36 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/01/24 18:18:31 by gwinnink         ###   ########.fr       */
+/*   Updated: 2023/01/26 11:02:48 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 #include "objects.h"
 #include "MLX42/MLX42.h"
 #include "scene.h"
+#include "libft.h"
+#include "parse.h"
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
 
-t_vect3					cast_ray(t_scene scene, double x, double y);
+t_vect3	cast_ray(t_scene scene, double x, double y);
 
 void	func(mouse_key_t button, action_t action, modifier_key_t mods, void *void_scene)
 {
@@ -33,17 +35,18 @@ void	func(mouse_key_t button, action_t action, modifier_key_t mods, void *void_s
 	get_collision(void_scene, ray);
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_scene			scene;
 	t_vect3			ray;
 	int				color;
 	mlx_image_t		*img;
 
+	if (argc != 2)
+		error_msg_exit("Invalid arguments!\n", EXIT_FAILURE);
 	scene.mlx = mlx_init(WIDTH, HEIGHT, "MiniReTweet", false);
 	img = mlx_new_image(scene.mlx, WIDTH + 1, HEIGHT + 1);
-	init_scene(NULL, &scene);
-	printf("step = %f\n", scene.camera.dist);
+	init_scene(argv[1], &scene);
 	for (double y = 0; y < HEIGHT ; y++)
 	{
 		for (double x = 0; x < WIDTH; x++)

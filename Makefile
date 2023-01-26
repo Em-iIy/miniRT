@@ -26,6 +26,8 @@ FILES_SRCS =	main.c \
 				parse_coords.c \
 				parse_direction.c \
 				parse_object.c \
+				parse_line.c \
+				parse_file_name.c \
 
 FILES_OBJS = $(FILES_SRCS:.c=.o)
 
