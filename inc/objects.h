@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   objects.h                                          :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/01/10 14:37:49 by gwinnink      #+#    #+#                 */
-/*   Updated: 2023/01/26 11:58:57 by fpurdom       ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   objects.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/10 14:37:49 by gwinnink          #+#    #+#             */
+/*   Updated: 2023/01/26 15:07:42 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ enum e_obj
 {
 	SPHERE,
 	CYLINDER,
-	PLANE
+	PLANE,
+	CIRCLE
 };
 
 typedef struct s_object
@@ -46,7 +47,7 @@ t_double_intersect		cyl_collision(t_vect3 ray, t_vect3 pos, t_object cyl);
 
 t_object	*obj_sp(t_object *obj, double diameter);
 t_object	*obj_pl(t_object *obj, t_vect3 orientation);
-t_object	*obj_cy(t_object *obj, t_vect3 orientation, \
+void		obj_cy(t_object **objs, t_vect3 orientation, \
 	double length, double diameter);
 
 t_object	*obj_new(t_vect3 coords, int color);

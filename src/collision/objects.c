@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   objects.c                                          :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/01/10 14:48:51 by gwinnink      #+#    #+#                 */
-/*   Updated: 2023/01/26 12:00:30 by fpurdom       ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   objects.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/10 14:48:51 by gwinnink          #+#    #+#             */
+/*   Updated: 2023/01/26 15:00:04 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_object	*obj_pl(t_object *obj, t_vect3 orientation)
 	return (obj);
 }
 
-t_object	*obj_cy(t_object *obj, t_vect3 orientation, \
+static t_object	*obj_cylinder(t_object *obj, t_vect3 orientation, \
 	double length, double diameter)
 {
 	obj->type = CYLINDER;
@@ -39,6 +39,24 @@ t_object	*obj_cy(t_object *obj, t_vect3 orientation, \
 	obj->diameter = diameter;
 	obj->radius = diameter / 2;
 	return (obj);
+}
+
+void	obj_cy(t_object **objs, t_vect3 orientation, \
+	double length, double diameter)
+{
+	t_object	*temp;
+
+	*objs = obj_cylinder(*objs, orientation, length, diameter);
+	temp = obj_new((*objs)->pos, (*objs)->color);
+	temp->type = CIRCLE;
+	temp->radius = diameter / 2;
+	temp->orient = orientation * -1;
+	obj_add_front(objs, temp);
+	temp = obj_new((*objs)->pos + orientation * length, (*objs)->color);
+	temp->type = CIRCLE;
+	temp->radius = diameter / 2;
+	temp->orient = orientation;
+	obj_add_front(objs, temp);
 }
 
 int	get_collision(void *void_scene, t_vect3 ray)
