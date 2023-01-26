@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/10 14:37:49 by gwinnink      #+#    #+#                 */
-/*   Updated: 2023/01/25 20:01:05 by fpurdom       ########   odam.nl         */
+/*   Updated: 2023/01/26 11:25:58 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_object
 	double			diameter;
 	double			lenght;
 	double			radius;
+	int				alt;
 }	t_object;
 
 t_double_intersect		create_return(double t1, double t2);

@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/10 14:49:51 by gwinnink      #+#    #+#                 */
-/*   Updated: 2023/01/20 19:13:11 by fpurdom       ########   odam.nl         */
+/*   Updated: 2023/01/26 11:32:30 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_object	*obj_new(t_vect3 coords, int color)
 	if (!ret)
 		exit (1);
 	ret->next = NULL;
-	ret->coords = coords;
+	ret->pos = coords;
 	ret->color = color;
 	return (ret);
 }

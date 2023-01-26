@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/11 13:37:29 by fpurdom       #+#    #+#                 */
-/*   Updated: 2023/01/25 19:58:10 by fpurdom       ########   odam.nl         */
+/*   Updated: 2023/01/26 11:33:21 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ static t_vect3	get_normal(t_vect3 start, t_object saved_obj)
 	else if (saved_obj.type == CYLINDER)
 		return (vect3_normalize(saved_obj.pos + (vect3_dot_product(start -
 				saved_obj.pos, saved_obj.orient) * saved_obj.orient), start));
+	return (vect3_0());
 }
 
 int	get_pixel_colour(t_vect3 ray, t_scene *scene, t_object *saved_obj, double t)
