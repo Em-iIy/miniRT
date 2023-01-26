@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:01:10 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/01/25 16:57:14 by gwinnink         ###   ########.fr       */
+/*   Updated: 2023/01/26 14:59:40 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ t_vect3	parse_direction(char *str)
 
 	if (!is_valid(ret[0]) || !is_valid(ret[1]) || !is_valid(ret[2]))
 		error_msg_exit("Parse error: invalid vector\n", EXIT_FAILURE);
-	return (ret);
+	return (vect3_normalize(vect3_0(), ret));
 }

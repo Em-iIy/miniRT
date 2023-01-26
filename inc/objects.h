@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/10 14:37:49 by gwinnink      #+#    #+#                 */
-/*   Updated: 2023/01/26 14:54:52 by fpurdom       ########   odam.nl         */
+/*   Updated: 2023/01/26 15:10:28 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ t_double_intersect		cyl_collision(t_vect3 ray, t_vect3 pos, t_object *cyl);
 
 t_object	*obj_sp(t_object *obj, double diameter);
 t_object	*obj_pl(t_object *obj, t_vect3 orientation);
-t_object	*obj_cy(t_object *obj, t_vect3 orientation, \
+void		obj_cy(t_object **objs, t_vect3 orientation, \
 	double length, double diameter);
 
 t_object	*obj_new(t_vect3 coords, int color);

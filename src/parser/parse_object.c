@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 19:17:08 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/01/25 19:50:18 by gwinnink         ###   ########.fr       */
+/*   Updated: 2023/01/26 14:56:22 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ void	parse_cyl(t_object **objs, char **line)
 		i++;
 	if (i != 6)
 		error_msg_exit("Parse error: invalid plane\n", EXIT_FAILURE);
-	obj_add_front(objs, obj_cy(obj_new(parse_coords(line[1]), parse_rgb(line[5])), parse_direction(line[2]), ft_atod(line[4]), ft_atod(line[3])));
+	obj_add_front(objs, obj_new(parse_coords(line[1]), parse_rgb(line[5])));
+	obj_cy(objs, parse_direction(line[2]), ft_atod(line[4]), ft_atod(line[3]));
 }
