@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/11 13:37:29 by fpurdom       #+#    #+#                 */
-/*   Updated: 2023/01/26 16:53:54 by fpurdom       ########   odam.nl         */
+/*   Updated: 2023/01/26 18:37:54 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,14 +86,14 @@ int	get_pixel_colour(t_vect3 ray, t_scene *scene, t_object *saved_obj, double t)
 		if (objs->type == SPHERE)
 			intersects = sphere_collision(start, vect3_normalize(start, scene->light.pos), objs->pos, objs->radius);
 		else if (objs->type == PLANE)
-			intersects = plane_collision(start, scene->light.pos, objs->pos, objs->orient);
+			intersects = plane_collision(start, vect3_normalize(start, scene->light.pos), objs->pos, objs->orient);
 		else if (objs->type == CYLINDER)
 		{
 			intersects = cyl_collision(vect3_normalize(start, scene->light.pos), start, objs);
 			//printf("t1: %f\tt2: %f\n", intersects.t1, intersects.t2);
 		}
 		else if (objs->type == CIRCLE)
-			intersects = circle_collision(scene->light.pos, start, objs);
+			intersects = circle_collision(vect3_normalize(start, scene->light.pos), start, objs);
 		if ((intersects.t1 > 0.00000001 || intersects.t2 > 0.00000001) && (intersects.t1 < dist || intersects.t2 < dist))
 			return (shadow);
 		objs = objs->next;
