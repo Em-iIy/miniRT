@@ -14,6 +14,7 @@ FILES_SRCS =	main.c \
 				sphere.c \
 				plane.c \
 				cylinder.c \
+				circle.c \
 				ray.c \
 				object_utils.c \
 				objects.c \

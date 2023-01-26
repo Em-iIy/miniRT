@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/10 14:48:51 by gwinnink      #+#    #+#                 */
-/*   Updated: 2023/01/26 12:00:30 by fpurdom       ########   odam.nl         */
+/*   Updated: 2023/01/26 14:55:05 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_object	*obj_sp(t_object *obj, double diameter)
 t_object	*obj_pl(t_object *obj, t_vect3 orientation)
 {
 	obj->type = PLANE;
-	obj->orient = orientation;
+	obj->orient = vect3_normalize(vect3_0(), orientation);
 	return (obj);
 }
 
@@ -34,7 +34,9 @@ t_object	*obj_cy(t_object *obj, t_vect3 orientation, \
 	double length, double diameter)
 {
 	obj->type = CYLINDER;
-	obj->orient = orientation;
+	obj->orient = vect3_normalize(vect3_0(), orientation);
+	//vect3_print("cyl", obj->orient);
+	//printf("\n");
 	obj->lenght = length;
 	obj->diameter = diameter;
 	obj->radius = diameter / 2;
@@ -62,7 +64,9 @@ int	get_collision(void *void_scene, t_vect3 ray)
 		else if (objs->type == PLANE)
 			temp = plane_collision(scene->camera.pos, ray, objs->pos, objs->orient);
 		else if (objs->type == CYLINDER)
-			temp = cyl_collision(ray, scene->camera.pos, *objs);
+			temp = cyl_collision(ray, scene->camera.pos, objs);
+		else if (objs->type == CIRCLE)
+			temp = circle_collision(ray, scene->camera.pos, objs);
 		if (temp.t1 < temp.t2)
 			temp_t = temp.t1;
 		else

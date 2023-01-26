@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/11 13:40:07 by fpurdom       #+#    #+#                 */
-/*   Updated: 2023/01/26 12:00:03 by fpurdom       ########   odam.nl         */
+/*   Updated: 2023/01/26 15:06:59 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@ void	init_scene(char	*infile, t_scene *scene)
 	const int	fd = parse_file_name(infile);
 	char		*line;
 
+	scene->camera.set = false;
+	scene->light.set = false;
+	scene->amlight.set = false;
+	scene->objs = NULL;
 	if (fd < 0)
 		error_msg_exit("Filename error: how you get here lol\n", EXIT_FAILURE);
 	while (1)
