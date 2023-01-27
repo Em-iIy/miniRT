@@ -6,16 +6,16 @@
 /*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/10 14:49:51 by gwinnink      #+#    #+#                 */
-/*   Updated: 2023/01/26 11:32:30 by fpurdom       ########   odam.nl         */
+/*   Updated: 2023/01/27 14:03:44 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "objects.h"
 #include <stdlib.h>
 
-t_double_intersect	create_return(double t1, double t2)
+t_intersect	create_return(double t1, double t2)
 {
-	t_double_intersect	ret;
+	t_intersect	ret;
 
 	ret.t1 = t1;
 	ret.t2 = t2;

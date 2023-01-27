@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/10 12:01:37 by gwinnink      #+#    #+#                 */
-/*   Updated: 2023/01/20 19:13:47 by fpurdom       ########   odam.nl         */
+/*   Updated: 2023/01/27 14:05:07 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 #include <stdbool.h>
 #include "objects.h"
 
-t_double_intersect	quadr_form(const double a, const double b, const double c)
+t_intersect	quadr_form(const double a, const double b, const double c)
 {
-	const double		discr = b * b - 4 * a * c;
-	double				t1;
-	double				t2;
-	t_double_intersect	ret;
+	const double	discr = b * b - 4 * a * c;
+	double			t1;
+	double			t2;
+	t_intersect		ret;
 
 	if (discr < 0)
 		return (create_return(discr, discr));

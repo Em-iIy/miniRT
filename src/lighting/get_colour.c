@@ -6,97 +6,48 @@
 /*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/11 13:37:29 by fpurdom       #+#    #+#                 */
-/*   Updated: 2023/01/26 18:37:54 by fpurdom       ########   odam.nl         */
+/*   Updated: 2023/01/27 20:22:26 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
-#include <stdbool.h>
-#include <math.h>
+#include "colour.h"
 
-#include <stdio.h>
-
-int	get_rgba(int r, int g, int b, int a)
+static t_intersect	get_intersects(t_object *obj, t_vect3 start,
+t_vect3 light_pos)
 {
-	return (r << 24 | g << 16 | b << 8 | a);
+	t_intersect	intersects;
+
+	if (obj->type == SPHERE)
+		intersects = sphere_coli(start, vect3_normalize(start, light_pos),
+				obj->pos, obj->radius);
+	else if (obj->type == PLANE)
+		intersects = plane_coli(start, vect3_normalize(start, light_pos),
+				obj->pos, obj->orient);
+	else if (obj->type == CYLINDER)
+		intersects = cylinder_coli(vect3_normalize(start, light_pos),
+				start, obj);
+	else if (obj->type == CIRCLE)
+		intersects = circle_coli(vect3_normalize(start, light_pos), start, obj);
+	return (intersects);
 }
 
-static t_vect3	give_rgba(int colour)
+int	get_pixel_colour(t_vect3 ray, t_scene *scene, t_object *saved, double t)
 {
-	return ((t_vect3){
-		colour >> 24 & 255,
-		colour >> 16 & 255,
-		colour >> 8 & 255
-	});
-}
+	const t_vect3	start = scene->camera.pos + ray * t;
+	const t_vect3	normal = get_normal(start, saved);
+	const double	dist = vect3_abs(start - scene->light.pos);
+	t_intersect		intersects;
+	t_object		*objs;
 
-static int	get_shadow(int rgba, double intensity)
-{
-	return (get_rgba((rgba >> 24 & 255) * intensity, (rgba >> 16 & 255) * intensity, (rgba >> 8 & 255) * intensity, 255));
-}
-
-static int	get_light(t_vect3 light_dir, t_vect3 pixel_dir, int colour, int shadow)
-{
-	float	d;
-	t_vect3	rgba;
-	t_vect3	ret;
-
-	//vect3_print("normal: ", pixel_dir);
-	d = vect3_dot_product(pixel_dir, light_dir);
-	if (d < 0)
-		d = 0;
-	//printf("d = %f\n", d);
-	rgba = give_rgba(colour) * d;
-	ret[0] = sqrt((pow(rgba[0], 2) + pow(shadow >> 24 & 255, 2)) / 2);
-	if (ret[0] < (shadow >> 24 & 255))
-		ret[0] = shadow >> 24 & 255;
-	ret[1] = sqrt((pow(rgba[1], 2) + pow(shadow >> 16 & 255, 2)) / 2);
-	if (ret[1] < (shadow >> 16 & 255))
-		ret[1] = shadow >> 16 & 255;
-	ret[2] = sqrt((pow(rgba[2], 2) + pow(shadow >> 8 & 255, 2)) / 2);
-	if (ret[2] < (shadow >> 8 & 255))
-		ret[2] = shadow >> 8 & 255;
-	return (get_rgba(ret[0], ret[1], ret[2], 255));
-}
-
-static t_vect3	get_normal(t_vect3 start, t_object *saved_obj)
-{
-	if (saved_obj->type == SPHERE)
-		return (vect3_normalize(saved_obj->pos, start));
-	if (saved_obj->type == CYLINDER)
-		return (vect3_normalize(saved_obj->pos + (vect3_dot_product(start - saved_obj->pos, saved_obj->orient) * saved_obj->orient), start));
-	return (saved_obj->orient);
-}
-
-int	get_pixel_colour(t_vect3 ray, t_scene *scene, t_object *saved_obj, double t)
-{
-	const t_vect3		start = scene->camera.pos + ray * t;
-	const t_vect3		normal = get_normal(start, saved_obj);
-	const double		dist = vect3_abs(start - scene->light.pos);
-	const int			shadow = get_shadow(saved_obj->color,
-								scene->amlight.brightness);
-	t_double_intersect	intersects;
-	t_object			*objs;
-
-	// vect3_print("start", start);
-	// printf("\n");
 	objs = scene->objs;
 	while (objs)
 	{
-		if (objs->type == SPHERE)
-			intersects = sphere_collision(start, vect3_normalize(start, scene->light.pos), objs->pos, objs->radius);
-		else if (objs->type == PLANE)
-			intersects = plane_collision(start, vect3_normalize(start, scene->light.pos), objs->pos, objs->orient);
-		else if (objs->type == CYLINDER)
-		{
-			intersects = cyl_collision(vect3_normalize(start, scene->light.pos), start, objs);
-			//printf("t1: %f\tt2: %f\n", intersects.t1, intersects.t2);
-		}
-		else if (objs->type == CIRCLE)
-			intersects = circle_collision(vect3_normalize(start, scene->light.pos), start, objs);
-		if ((intersects.t1 > 0.00000001 || intersects.t2 > 0.00000001) && (intersects.t1 < dist || intersects.t2 < dist))
-			return (shadow);
+		intersects = get_intersects(objs, start, scene->light.pos);
+		if ((intersects.t1 > 0.00000001 || intersects.t2 > 0.00000001)
+			&& (intersects.t1 < dist || intersects.t2 < dist))
+			return (get_shadow(saved->color, scene->amlight.brightness));
 		objs = objs->next;
 	}
-	return (get_light(vect3_normalize(start, scene->light.pos), normal, saved_obj->color, shadow));
+	return (get_light(vect3_normalize(start, scene->light.pos), normal,
+			saved->color, get_shadow(saved->color, scene->amlight.brightness)));
 }

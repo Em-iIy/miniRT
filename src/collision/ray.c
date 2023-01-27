@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ray.c                                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 14:58:51 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/01/24 16:12:45 by gwinnink         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   ray.c                                              :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/01/17 14:58:51 by gwinnink      #+#    #+#                 */
+/*   Updated: 2023/01/27 14:13:42 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ t_vect3	cast_ray(t_scene scene, double x, double y)
 	t_vect3			p2;
 	t_vect3			ret;
 
-	p1 = scene.camera.pos + scene.camera.orient * DIST - scene.camera.right * step;
+	p1 = scene.camera.pos + scene.camera.orient
+		* DIST - scene.camera.right * step;
 	p2 = p1 + scene.camera.right * x / WIDTH * 2 * step;
 	ret = p2 + scene.camera.up * y / HEIGHT * 2 * step;
 	return (vect3_normalize(scene.camera.pos, ret));

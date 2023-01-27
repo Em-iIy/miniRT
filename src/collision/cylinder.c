@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   cyl->c                                  	        :+:    :+:         	  */
+/*   c->c                                  	        :+:    :+:         	  */
 /*                                                     +:+                    */
 /*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
@@ -14,40 +14,40 @@
 #include <math.h>
 
 /*
-x = subtraction(camera_pos, cyl_pos)
+x = subtraction(camera_pos, c_pos)
 ------------------------------------------------------
 (-b-+sqrt(b^2-4ac))/2a where:
 
-a = dot_product(ray, ray) - dot_product(ray, cyl_dir)
+a = dot_product(ray, ray) - dot_product(ray, c_dir)
 
-b = 2 * (dot_product(ray, x) - dot_product(ray, cyl_dir) * dot_product(x, cyl_dir)
+b = 2 * (dot_product(ray, x) - dot_product(ray, c_dir) * dot_product(x, c_dir)
 
-c = dot_product(x, x) - dot_product(x, cyl_dir)^2 - radius^2
+c = dot_product(x, x) - dot_product(x, c_dir)^2 - radius^2
 
 */
 
-t_double_intersect	cyl_collision(t_vect3 ray, t_vect3 pos, t_object *cyl)
+t_intersect	cylinder_coli(t_vect3 ray, t_vect3 pos, t_object *c)
 {
-	const t_vect3		x = pos - cyl->pos;
-	t_double_intersect	tube;
-	t_double_intersect	circles;
-	t_double_intersect	m;
+	const t_vect3	x = pos - c->pos;
+	t_intersect		tube;
+	t_intersect		circles;
+	t_intersect		m;
 
-	tube = quadr_form(vect3_dot_product(ray, ray) - pow(vect3_dot_product(ray, cyl->orient), 2), 2 * (vect3_dot_product(ray, x) - vect3_dot_product(ray, cyl->orient) * vect3_dot_product(x, cyl->orient)), vect3_dot_product(x, x) - pow(vect3_dot_product(x, cyl->orient), 2) - pow(cyl->radius, 2));
+	tube = quadr_form(vect3_dot(ray, ray) - pow(vect3_dot(ray, c->orient), 2),
+			2 * (vect3_dot(ray, x) - vect3_dot(ray, c->orient)
+				* vect3_dot(x, c->orient)), vect3_dot(x, x)
+			- pow(vect3_dot(x, c->orient), 2) - pow(c->radius, 2));
 	if (tube.t1)
 	{
-		m.t1 = vect3_dot_product(ray, cyl->orient * tube.t1) + vect3_dot_product(x, cyl->orient);
-		if (m.t1 < 0 || m.t1 > cyl->lenght)
+		m.t1 = vect3_dot(ray, c->orient * tube.t1) + vect3_dot(x, c->orient);
+		if (m.t1 < 0 || m.t1 > c->lenght)
 			tube.t1 = -1;
 	}
 	if (tube.t2)
 	{
-		m.t2 = vect3_dot_product(ray, cyl->orient * tube.t2) + vect3_dot_product(x, cyl->orient);
-		if (m.t2 < 0 || m.t2 > cyl->lenght)
+		m.t2 = vect3_dot(ray, c->orient * tube.t2) + vect3_dot(x, c->orient);
+		if (m.t2 < 0 || m.t2 > c->lenght)
 			tube.t2 = -1;
 	}
-	// m.t2 = vect3_dot_product(ray, cyl->orient * tube.t2) + vect3_dot_product(x, cyl->orient);
-	// if (m.t1 < 0 || m.t1 > cyl->lenght || (m.t2 < 0 || m.t2 > cyl->lenght))
-	// 	return (create_return(-1, -1));
 	return (tube);
 }

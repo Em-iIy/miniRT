@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vect3_dot_product.c                                :+:      :+:    :+:   */
+/*   vect3_dot.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "vect3_math.h"
 
-double	vect3_dot_product(t_vect3 a, t_vect3 b)
+double	vect3_dot(t_vect3 a, t_vect3 b)
 {
 	return (a[0] * b[0] + a[1] * b[1] + a[2] * b[2]);
 }

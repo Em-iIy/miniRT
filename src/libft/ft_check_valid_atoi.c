@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_check_valid_atoi.c                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/02 14:14:07 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/01/25 16:31:48 by gwinnink         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   ft_check_valid_atoi.c                              :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/11/02 14:14:07 by gwinnink      #+#    #+#                 */
+/*   Updated: 2023/01/27 19:39:22 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ static long	ft_atol(const char *str)
 	}
 	return (ret_long * neg);
 }
-
 
 bool	ft_check_valid_atoi(int *code, char *str)
 {

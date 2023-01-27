@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/10 12:00:08 by gwinnink      #+#    #+#                 */
-/*   Updated: 2023/01/25 16:35:13 by fpurdom       ########   odam.nl         */
+/*   Updated: 2023/01/27 14:30:59 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@
 
 /*
 (-b-+sqrt(b^2-4ac))/2a where:
-a = d^2 = 		vect3_dot_product(d, d)
-b = 2vd =		2 * vect3_dot_product(v, d)
-c = v^2-r^2 = 	vect3_dot_product(v, v) - r * r
+a = d^2 = 		vect3_dot(d, d)
+b = 2vd =		2 * vect3_dot(v, d)
+c = v^2-r^2 = 	vect3_dot(v, v) - r * r
 
-sphere_collision(scene->camera.pos(o), ray(d), objs->pos(c), objs->radius(r));
+sphere_coli(scene->camera.pos(o), ray(d), objs->pos(c), objs->radius(r));
 */
-t_double_intersect	sphere_collision(t_vect3 o, t_vect3 d, t_vect3 c, double r)
+t_intersect	sphere_coli(t_vect3 o, t_vect3 d, t_vect3 c, double r)
 {
 	const t_vect3	v = o - c;
 
-	return (quadr_form(vect3_dot_product(d, d), 2 * vect3_dot_product(v, d), \
-		vect3_dot_product(v, v) - (r * r)));
+	return (quadr_form(vect3_dot(d, d), 2 * vect3_dot(v, d), \
+		vect3_dot(v, v) - (r * r)));
 }

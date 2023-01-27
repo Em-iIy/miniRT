@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   scene.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 13:23:16 by fpurdom           #+#    #+#             */
-/*   Updated: 2023/01/25 17:06:02 by gwinnink         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   scene.h                                            :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/01/11 13:23:16 by fpurdom       #+#    #+#                 */
+/*   Updated: 2023/01/27 20:13:30 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define SCENE_H
 
 # include "objects.h"
-# include "vect3_math.h"
 # include "MLX42/MLX42.h"
 # include <stdbool.h>
 

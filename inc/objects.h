@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/10 14:37:49 by gwinnink      #+#    #+#                 */
-/*   Updated: 2023/01/26 15:10:28 by fpurdom       ########   odam.nl         */
+/*   Updated: 2023/01/27 14:32:24 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ typedef struct s_object
 	double			radius;
 }	t_object;
 
-t_double_intersect		create_return(double t1, double t2);
-t_double_intersect		quadr_form(const double a, const double b, const double c);
-int						get_collision(void *void_scene, t_vect3 ray);
-t_double_intersect		sphere_collision(t_vect3 o, t_vect3 d, t_vect3 c, double r);
-t_double_intersect		circle_collision(t_vect3 ray, t_vect3 pos, t_object *c);
-t_double_intersect		plane_collision(t_vect3 r_o, t_vect3 d, t_vect3 p_o, t_vect3 n);
-t_double_intersect		cyl_collision(t_vect3 ray, t_vect3 pos, t_object *cyl);
+t_intersect	create_return(double t1, double t2);
+t_intersect	quadr_form(const double a, const double b, const double c);
+int			get_collision(void *void_scene, t_vect3 ray);
+t_intersect	sphere_coli(t_vect3 o, t_vect3 d, t_vect3 c, double r);
+t_intersect	circle_coli(t_vect3 ray, t_vect3 pos, t_object *c);
+t_intersect	plane_coli(t_vect3 r_o, t_vect3 d, t_vect3 p_o, t_vect3 n);
+t_intersect	cylinder_coli(t_vect3 ray, t_vect3 pos, t_object *cyl);
 
 t_object	*obj_sp(t_object *obj, double diameter);
 t_object	*obj_pl(t_object *obj, t_vect3 orientation);

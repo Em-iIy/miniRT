@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/10 12:23:36 by gwinnink      #+#    #+#                 */
-/*   Updated: 2023/01/26 15:11:52 by fpurdom       ########   odam.nl         */
+/*   Updated: 2023/01/27 17:56:09 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		error_msg_exit("Invalid arguments!\n", EXIT_FAILURE);
-	scene.mlx = mlx_init(WIDTH, HEIGHT, "MiniReTweet", false);
+	scene.mlx = mlx_init(WIDTH, HEIGHT, "MiniReTweet", true);
 	img = mlx_new_image(scene.mlx, WIDTH + 1, HEIGHT + 1);
 	init_scene(argv[1], &scene);
 	for (double y = 0; y < HEIGHT ; y++)

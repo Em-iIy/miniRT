@@ -11,6 +11,7 @@ FILES_SRCS =	main.c \
 				vect3_abs.c \
 				vect3_normalize.c \
 				quadratic_formula.c \
+				get_collision.c \
 				sphere.c \
 				plane.c \
 				cylinder.c \
@@ -22,6 +23,7 @@ FILES_SRCS =	main.c \
 				add_camera.c \
 				add_lights.c \
 				get_colour.c \
+				lighting_utils.c \
 				parse_rgb.c \
 				parse_atod.c \
 				parse_coords.c \
