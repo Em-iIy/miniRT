@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   object_utils.c                                     :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/01/10 14:49:51 by gwinnink      #+#    #+#                 */
-/*   Updated: 2023/01/27 14:03:44 by fpurdom       ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   object_utils.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/10 14:49:51 by gwinnink          #+#    #+#             */
+/*   Updated: 2023/02/07 16:03:56 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_intersect	create_return(double t1, double t2)
 	return (ret);
 }
 
-t_object	*obj_new(t_vect3 coords, int color)
+t_object	*obj_new(t_vect3 coords, t_vect3 color)
 {
 	t_object	*ret;
 
@@ -31,7 +31,7 @@ t_object	*obj_new(t_vect3 coords, int color)
 		exit (1);
 	ret->next = NULL;
 	ret->pos = coords;
-	ret->color = color;
+	ret->color = color / 255;
 	return (ret);
 }
 

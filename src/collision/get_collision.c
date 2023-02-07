@@ -1,16 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   get_collision.c                                    :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: fpurdom <fpurdom@student.codam.nl>           +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/01/27 20:07:05 by fpurdom       #+#    #+#                 */
-/*   Updated: 2023/01/27 20:15:26 by fpurdom       ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   get_collision.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/27 20:07:05 by fpurdom           #+#    #+#             */
+/*   Updated: 2023/02/07 15:10:10 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scene.h"
+
+int	get_pixel_colour(t_vect3 ray, t_scene *scene, t_object *saved, double t);
 
 static t_intersect	get_t(t_object *obj, t_vect3 cam, t_vect3 ray)
 {

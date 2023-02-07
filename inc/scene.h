@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   scene.h                                            :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/01/11 13:23:16 by fpurdom       #+#    #+#                 */
-/*   Updated: 2023/01/27 20:13:30 by fpurdom       ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   scene.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/11 13:23:16 by fpurdom           #+#    #+#             */
+/*   Updated: 2023/02/07 16:12:39 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 typedef struct s_amblight
 {
 	double	brightness;
-	int		colour;
+	t_vect3	colour;
 	bool	set;
 }	t_amblight;
 
@@ -42,7 +42,7 @@ typedef struct s_light
 {
 	t_vect3	pos;
 	double	brightness;
-	int		colour;
+	t_vect3	colour;
 	bool	set;
 }	t_light;
 
