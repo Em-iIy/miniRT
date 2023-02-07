@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 11:34:12 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/01/26 10:22:52 by gwinnink         ###   ########.fr       */
+/*   Updated: 2023/02/07 15:33:38 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void		parse_plane(t_object **objs, char **line);
 void		parse_cyl(t_object **objs, char **line);
 
 int			parse_rgb(char *str);
+t_vect3		parse_vect_rgb(char *str);
 t_vect3		parse_coords(char *str);
 t_vect3		parse_direction(char *str);
 double		ft_atod(char *str);
