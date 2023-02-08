@@ -6,7 +6,7 @@
 /*   By: fpurdom <fpurdom@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/27 14:15:48 by fpurdom       #+#    #+#                 */
-/*   Updated: 2023/02/08 18:08:45 by fpurdom       ########   odam.nl         */
+/*   Updated: 2023/02/08 18:59:02 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static t_vect3	get_diffuse(t_vect3 normal, t_vect3 l_dir, t_vect3 colour, t_vect
 
 	d = vect3_dot(normal, l_dir);
 	if (d < 0)
-		d = 0;
+		d *= -1;
 	return (light * colour * d);
 }
 
@@ -33,23 +33,23 @@ static t_vect3	get_specular(t_scene *scene, t_vect3 view, t_vect3 normal, t_vect
 	double	d;
 
 	d = fmax(vect3_dot(view, get_reflection(normal, l_dir)), 0.0);
-	return (scene->light.colour * pow(d, 8));
+	return (scene->light.colour * pow(d, 32));
 }
 
-static t_vect3	get_ambient(t_vect3 colour_obj, t_vect3 colour_amb)
+t_vect3	get_ambient(t_vect3 colour_obj, t_vect3 colour_amb)
 {
 	return (colour_obj * colour_amb);
 }
 
 int	get_int_rgba(t_vect3 c)
 {
-	double	r = fmin(c[0], 1.0);
-	double	g = fmin(c[1], 1.0);
-	double	b = fmin(c[2], 1.0);
+	const int	r = (int)(fmin(c[0], 1.0) * 255);
+	const int	g = (int)(fmin(c[1], 1.0) * 255);
+	const int	b = (int)(fmin(c[2], 1.0) * 255);
 
-	return ((int)(r * 255) << 24 | (int)(g * 255) << 16 | (int)(b * 255) << 8 | 255);
+	return (r << 24 | g << 16 | b << 8 | 255);
 }
-
+//make struct for pixel properties
 int	get_light(t_vect3 l_dir, t_vect3 normal, t_vect3 colour, t_scene *scene, t_vect3 ray)
 {
 	const t_vect3	diffuse = get_diffuse(normal, l_dir, colour, scene->light.colour);
