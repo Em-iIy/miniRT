@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/11 13:37:29 by fpurdom       #+#    #+#                 */
-/*   Updated: 2023/02/07 16:30:54 by fpurdom       ########   odam.nl         */
+/*   Updated: 2023/02/08 17:36:13 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,8 @@ int	get_pixel_colour(t_vect3 ray, t_scene *scene, t_object *saved, double t)
 		intersects = get_intersects(objs, start, scene->light.pos);
 		if ((intersects.t1 > 0.00000001 || intersects.t2 > 0.00000001)
 			&& (intersects.t1 < dist || intersects.t2 < dist))
-			return (ret_int_rgba(scene->amlight.colour));
+			return (get_light(vect3_0(), vect3_0(), saved->color, scene, ray));
 		objs = objs->next;
 	}
-	return (get_light(vect3_normalize(start, scene->light.pos), normal,
-			saved->color, scene->amlight.colour, scene->light.brightness));
+	return (get_light(vect3_normalize(start, scene->light.pos), normal, saved->color, scene, ray));
 }

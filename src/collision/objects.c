@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/10 14:48:51 by gwinnink      #+#    #+#                 */
-/*   Updated: 2023/01/27 20:07:00 by fpurdom       ########   odam.nl         */
+/*   Updated: 2023/02/08 16:17:02 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,17 @@ static t_object	*obj_cylinder(t_object *obj, t_vect3 orientation, \
 }
 
 void	obj_cy(t_object **objs, t_vect3 orientation, \
-	double length, double diameter)
+	double length, double diameter, t_vect3 colour)
 {
 	t_object	*temp;
 
 	*objs = obj_cylinder(*objs, orientation, length, diameter);
-	temp = obj_new((*objs)->pos, (*objs)->color);
+	temp = obj_new((*objs)->pos, colour);
 	temp->type = CIRCLE;
 	temp->radius = diameter / 2;
 	temp->orient = orientation * -1;
 	obj_add_front(objs, temp);
-	temp = obj_new((*objs)->pos + orientation * length, (*objs)->color);
+	temp = obj_new((*objs)->pos + orientation * length, colour);
 	temp->type = CIRCLE;
 	temp->radius = diameter / 2;
 	temp->orient = orientation;
