@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   objects.h                                          :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/01/10 14:37:49 by gwinnink      #+#    #+#                 */
-/*   Updated: 2023/02/08 16:16:33 by fpurdom       ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   objects.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/10 14:37:49 by gwinnink          #+#    #+#             */
+/*   Updated: 2023/02/09 14:18:37 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_object
 	double			diameter;
 	double			lenght;
 	double			radius;
+	int				inside;
 }	t_object;
 
 t_intersect	create_return(double t1, double t2);

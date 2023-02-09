@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:07:44 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/02/09 11:56:15 by gwinnink         ###   ########.fr       */
+/*   Updated: 2023/02/09 14:53:42 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ static t_vect3	get_diffuse(t_point p, t_vect3 l_colour)
 
 	d = vect3_dot(p.normal, p.light_ray);
 	if (d < 0)
-		d *= -1;
+		d = 0;
+		// d *= -1;
 	return (l_colour * p.colour * d);
 }
 

@@ -20,6 +20,7 @@ FILES_SRCS =	main.c \
 				object_utils.c \
 				objects.c \
 				init_scene.c \
+				check_inside.c \
 				add_camera.c \
 				add_lights.c \
 				get_colour.c \

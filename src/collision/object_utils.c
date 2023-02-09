@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 14:49:51 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/02/07 16:03:56 by gwinnink         ###   ########.fr       */
+/*   Updated: 2023/02/09 14:22:53 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_object	*obj_new(t_vect3 coords, t_vect3 color)
 	ret->next = NULL;
 	ret->pos = coords;
 	ret->color = color / 255;
+	ret->inside = 1;
 	return (ret);
 }
 
