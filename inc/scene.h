@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 13:23:16 by fpurdom           #+#    #+#             */
-/*   Updated: 2023/02/07 16:12:39 by gwinnink         ###   ########.fr       */
+/*   Updated: 2023/02/09 11:26:59 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,16 @@ typedef struct s_scene
 	t_light		light;
 	t_object	*objs;
 }	t_scene;
+
+typedef struct s_point
+{
+	t_vect3	pos;
+	t_vect3	colour;
+	t_vect3	cam_ray;
+	t_vect3	light_ray;
+	t_vect3	normal;
+	double	light_dist;
+}	t_point;
 
 void	init_scene(char	*infile, t_scene *scene);
 

@@ -23,6 +23,7 @@ FILES_SRCS =	main.c \
 				add_camera.c \
 				add_lights.c \
 				get_colour.c \
+				get_phong.c \
 				lighting_utils.c \
 				parse_rgb.c \
 				parse_atod.c \

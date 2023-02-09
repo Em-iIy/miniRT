@@ -1,16 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   get_colour.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/01/11 13:37:29 by fpurdom       #+#    #+#                 */
-/*   Updated: 2023/02/08 18:43:51 by fpurdom       ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   get_colour.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/11 13:37:29 by fpurdom           #+#    #+#             */
+/*   Updated: 2023/02/09 11:49:51 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "colour.h"
+
+static bool	check_intersects(t_intersect isect, double dist)
+{
+	return ((isect.t1 > 0.00000001 || isect.t2 > 0.00000001)
+		&& (isect.t1 < dist || isect.t2 < dist));
+}
 
 static t_intersect	get_intersects(t_object *obj, t_vect3 start,
 t_vect3 light_pos)
@@ -31,24 +37,28 @@ t_vect3 light_pos)
 	return (intersects);
 }
 
+
 int	get_pixel_colour(t_vect3 ray, t_scene *scene, t_object *saved, double t)
 {
-	const t_vect3	start = scene->camera.pos + ray * t;
-	const t_vect3	normal = get_normal(start, saved);
-	const double	dist = vect3_abs(start - scene->light.pos);
+	const t_point	point = {
+		.pos = scene->camera.pos + ray * t,
+		.colour = saved->color,
+		.cam_ray = ray,
+		.light_ray = vect3_normalize(point.pos, scene->light.pos),
+		.normal = get_normal(point.pos, saved),
+		.light_dist = vect3_abs(point.pos - scene->light.pos)
+	};
 	t_intersect		intersects;
 	t_object		*objs;
 
 	objs = scene->objs;
 	while (objs)
 	{
-		intersects = get_intersects(objs, start, scene->light.pos);
-		if ((intersects.t1 > 0.00000001 || intersects.t2 > 0.00000001)
-			&& (intersects.t1 < dist || intersects.t2 < dist))
+		intersects = get_intersects(objs, point.pos, scene->light.pos);
+		if (check_intersects(intersects, point.light_dist))
 			return (get_int_rgba(
 					get_ambient(saved->color, scene->amlight.colour)));
 		objs = objs->next;
 	}
-	return (get_light(vect3_normalize(
-				start, scene->light.pos), normal, saved->color, scene, ray));
+	return (get_phong(point, scene));
 }
