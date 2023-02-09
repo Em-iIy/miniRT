@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   objects.c                                          :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/01/10 14:48:51 by gwinnink      #+#    #+#                 */
-/*   Updated: 2023/02/08 16:17:02 by fpurdom       ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   objects.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/10 14:48:51 by gwinnink          #+#    #+#             */
+/*   Updated: 2023/02/09 15:56:19 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,17 @@ static t_object	*obj_cylinder(t_object *obj, t_vect3 orientation, \
 }
 
 void	obj_cy(t_object **objs, t_vect3 orientation, \
-	double length, double diameter, t_vect3 colour)
+	double length, double diameter)
 {
 	t_object	*temp;
 
 	*objs = obj_cylinder(*objs, orientation, length, diameter);
-	temp = obj_new((*objs)->pos, colour);
+	temp = obj_new((*objs)->pos, (*objs)->color * 255);
 	temp->type = CIRCLE;
 	temp->radius = diameter / 2;
 	temp->orient = orientation * -1;
 	obj_add_front(objs, temp);
-	temp = obj_new((*objs)->pos + orientation * length, colour);
+	temp = obj_new((*objs)->pos + orientation * length, (*objs)->color * 255);
 	temp->type = CIRCLE;
 	temp->radius = diameter / 2;
 	temp->orient = orientation;

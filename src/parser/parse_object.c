@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   parse_object.c                                     :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/01/25 19:17:08 by gwinnink      #+#    #+#                 */
-/*   Updated: 2023/02/08 16:17:31 by fpurdom       ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   parse_object.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/25 19:17:08 by gwinnink          #+#    #+#             */
+/*   Updated: 2023/02/09 15:56:50 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,5 @@ void	parse_cyl(t_object **objs, char **line)
 		error_msg_exit("Parse error: invalid plane\n", EXIT_FAILURE);
 	obj_add_front(objs, obj_new(parse_coords(line[1]), \
 		parse_vect_rgb(line[5])));
-	obj_cy(objs, parse_direction(line[2]), ft_atod(line[4]), ft_atod(line[3]), parse_vect_rgb(line[5]));
+	obj_cy(objs, parse_direction(line[2]), ft_atod(line[4]), ft_atod(line[3]));
 }

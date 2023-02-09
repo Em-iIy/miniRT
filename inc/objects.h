@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 14:37:49 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/02/09 14:18:37 by gwinnink         ###   ########.fr       */
+/*   Updated: 2023/02/09 15:57:33 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_intersect	cylinder_coli(t_vect3 ray, t_vect3 pos, t_object *cyl);
 t_object	*obj_sp(t_object *obj, double diameter);
 t_object	*obj_pl(t_object *obj, t_vect3 orientation);
 void		obj_cy(t_object **objs, t_vect3 orientation, \
-	double length, double diameter, t_vect3 colour);
+	double length, double diameter);
 
 t_object	*obj_new(t_vect3 coords, t_vect3 color);
 void		obj_add_front(t_object **head, t_object *new);

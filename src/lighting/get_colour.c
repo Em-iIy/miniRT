@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 13:37:29 by fpurdom           #+#    #+#             */
-/*   Updated: 2023/02/09 14:54:41 by gwinnink         ###   ########.fr       */
+/*   Updated: 2023/02/09 15:59:17 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 static bool	check_intersects(t_intersect isect, double dist)
 {
 	return ((isect.t1 > 0.00000001 && isect.t2 > 0.00000001)
-		&& (isect.t1 < dist || isect.t2 < dist));
-	return ((isect.t1 > 0.00000001 || isect.t2 > 0.00000001)
 		&& (isect.t1 < dist || isect.t2 < dist));
 }
 
@@ -39,7 +37,6 @@ t_vect3 light_pos)
 	return (intersects);
 }
 
-
 int	get_pixel_colour(t_vect3 ray, t_scene *scene, t_object *saved, double t)
 {
 	const t_point	point = {
@@ -57,14 +54,9 @@ int	get_pixel_colour(t_vect3 ray, t_scene *scene, t_object *saved, double t)
 	while (objs)
 	{
 		intersects = get_intersects(objs, point.pos, scene->light.pos);
-		// if (objs->type == SPHERE)
-			// printf("intersects whith sphere at (%f, %f)\tdist to light:%f (shadow)\n", intersects.t1, intersects.t2, point.light_dist);
 		if (check_intersects(intersects, point.light_dist))
-		{
-			// printf("intersects whith %d at (%f, %f)\tdist to light:%f (shadow)\n", objs->type, intersects.t1, intersects.t2, point.light_dist);
 			return (get_int_rgba(
 					get_ambient(saved->color, scene->amlight.colour)));
-		}
 		objs = objs->next;
 	}
 	return (get_phong(point, scene));

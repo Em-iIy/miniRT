@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 14:24:08 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/02/09 14:53:18 by gwinnink         ###   ########.fr       */
+/*   Updated: 2023/02/09 15:59:44 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ static void	inside_sphere(t_object *sphere, t_vect3 cam_pos)
 
 static void	inside_plane(t_object *plane, t_vect3 cam_pos)
 {
-
 	if (vect3_dot(cam_pos - plane->pos, plane->orient) < 0)
 		plane->inside = -1;
 }
@@ -34,7 +33,6 @@ void	check_inside(t_object *objs, t_vect3 cam_pos)
 			inside_sphere(objs, cam_pos);
 		else if (objs->type == PLANE || objs->type == CIRCLE)
 			inside_plane(objs, cam_pos);
-		// printf("type: %d, inside: %d\n", objs->type, objs->inside);
 		objs = objs->next;
 	}
 }
