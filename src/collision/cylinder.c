@@ -30,7 +30,6 @@ t_intersect	cylinder_coli(t_vect3 ray, t_vect3 pos, t_object *c)
 {
 	const t_vect3	x = pos - c->pos;
 	t_intersect		tube;
-	t_intersect		circles;
 	t_intersect		m;
 
 	tube = quadr_form(vect3_dot(ray, ray) - pow(vect3_dot(ray, c->orient), 2),
@@ -49,5 +48,9 @@ t_intersect	cylinder_coli(t_vect3 ray, t_vect3 pos, t_object *c)
 		if (m.t2 < 0 || m.t2 > c->lenght)
 			tube.t2 = -1;
 	}
+	if (tube.t1 > 0.00000001 && tube.t2 < 0)
+		tube.t2 = tube.t1;
+	else if (tube.t2 > 0.00000001 && tube.t1 < 0)
+		tube.t1 = tube.t2;
 	return (tube);
 }
