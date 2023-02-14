@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   lighting_utils.c                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 14:15:48 by fpurdom           #+#    #+#             */
-/*   Updated: 2023/02/09 14:46:53 by gwinnink         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   lighting_utils.c                                   :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/01/27 14:15:48 by fpurdom       #+#    #+#                 */
+/*   Updated: 2023/02/14 15:55:43 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
+#include "objects.h"
 #include <math.h>
 
 t_vect3	get_ambient(t_vect3 colour_obj, t_vect3 colour_amb)

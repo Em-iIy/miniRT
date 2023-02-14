@@ -1,18 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   check_inside.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/09 14:24:08 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/02/09 17:19:46 by gwinnink         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   check_inside.c                                     :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/02/09 14:24:08 by gwinnink      #+#    #+#                 */
+/*   Updated: 2023/02/14 15:58:30 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vect3_math.h"
-#include "scene.h"
-#include <math.h>
+#include "objects.h"
 
 static void	inside_sphere(t_object *sphere, t_vect3 cam_pos)
 {
@@ -32,9 +30,9 @@ static void	inside_cyl(t_object *cyl, t_vect3 cam_pos)
 	const t_vect3	pd = cam_pos - cyl->pos;
 	const double	dot = vect3_dot(pd, d);
 
-	if (vect3_dot(pd, pd) - dot * dot / (cyl->lenght * cyl->lenght) < cyl->radius * cyl->radius)
+	if (vect3_dot(pd, pd) - dot * dot
+		/ (cyl->lenght * cyl->lenght) < cyl->radius * cyl->radius)
 		cyl->inside = -1;
-	// if (vect3_abs((cam_pos - cyl->pos) * d) / vect3_abs(d) < cyl->radius)
 }
 
 void	check_inside(t_object *objs, t_vect3 cam_pos)

@@ -6,35 +6,13 @@
 /*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/10 12:23:36 by gwinnink      #+#    #+#                 */
-/*   Updated: 2023/01/27 17:56:09 by fpurdom       ########   odam.nl         */
+/*   Updated: 2023/02/14 15:57:02 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vect3_math.h"
-#include "objects.h"
-#include "MLX42/MLX42.h"
 #include "scene.h"
-#include "libft.h"
-#include "parse.h"
 #include "error.h"
-#include <stdio.h>
-#include <math.h>
 #include <stdlib.h>
-
-t_vect3	cast_ray(t_scene scene, double x, double y);
-
-void	func(mouse_key_t button, action_t action, modifier_key_t mods, void *void_scene)
-{
-	t_scene	*scene;
-	int32_t	x, y;
-	t_vect3	ray;
-
-	scene = (t_scene *)void_scene;
-	mlx_get_mouse_pos(scene->mlx, &x, &y);
-	printf("click (%d, %d)\n", x, y);
-	ray = cast_ray(*scene, x, HEIGHT / 2 - y);
-	get_collision(void_scene, ray);
-}
 
 int	main(int argc, char **argv)
 {
@@ -57,7 +35,6 @@ int	main(int argc, char **argv)
 			mlx_put_pixel(img, x, y, color);
 		}
 	}
-	mlx_mouse_hook(scene.mlx, &func, (void *)&scene);
 	mlx_image_to_window(scene.mlx, img, 0, 0);
 	mlx_loop(scene.mlx);
 }

@@ -1,20 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   objects.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/10 14:48:51 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/02/09 15:56:19 by gwinnink         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   objects.c                                          :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/01/10 14:48:51 by gwinnink      #+#    #+#                 */
+/*   Updated: 2023/02/14 15:34:01 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "objects.h"
-#include "vect3_math.h"
-#include "scene.h"
-#include "colour.h"
-#include <stdlib.h>
 
 t_object	*obj_sp(t_object *obj, double diameter)
 {

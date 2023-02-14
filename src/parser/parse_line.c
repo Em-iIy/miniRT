@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parse_line.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 10:13:20 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/01/26 10:38:34 by gwinnink         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   parse_line.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/01/26 10:13:20 by gwinnink      #+#    #+#                 */
+/*   Updated: 2023/02/14 16:03:36 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
 #include "error.h"
 #include "libft.h"
 #include "parse.h"
-#include <stdlib.h>
 
 void	parse_line(t_scene *scene, char *line)
 {

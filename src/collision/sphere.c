@@ -6,13 +6,11 @@
 /*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/10 12:00:08 by gwinnink      #+#    #+#                 */
-/*   Updated: 2023/01/27 14:30:59 by fpurdom       ########   odam.nl         */
+/*   Updated: 2023/02/14 15:54:28 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vect3_math.h"
 #include "objects.h"
-#include <stdbool.h>
 
 /*
 (-b-+sqrt(b^2-4ac))/2a where:

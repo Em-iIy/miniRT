@@ -6,19 +6,12 @@
 /*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/10 12:03:57 by gwinnink      #+#    #+#                 */
-/*   Updated: 2023/01/27 14:26:15 by fpurdom       ########   odam.nl         */
+/*   Updated: 2023/02/14 15:29:33 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VECT3_MATH_H
 # define VECT3_MATH_H
-
-// typedef struct s_vect3
-// {
-// 	double	x;
-// 	double	y;
-// 	double	z;
-// }	t_vect3;
 
 typedef double	t_vect3 __attribute__ ((vector_size(32)));
 

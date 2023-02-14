@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   init_scene.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 13:40:07 by fpurdom           #+#    #+#             */
-/*   Updated: 2023/02/09 14:45:23 by gwinnink         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   init_scene.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/01/11 13:40:07 by fpurdom       #+#    #+#                 */
+/*   Updated: 2023/02/14 15:59:59 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "error.h"
 #include "parse.h"
-#include <stdlib.h>
 #include <unistd.h>
-
-void	check_inside(t_object *objs, t_vect3 cam_pos);
 
 void	init_scene(char	*infile, t_scene *scene)
 {

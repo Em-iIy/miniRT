@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parse.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/25 11:34:12 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/02/07 15:33:38 by gwinnink         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   parse.h                                            :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/01/25 11:34:12 by gwinnink      #+#    #+#                 */
+/*   Updated: 2023/02/14 14:46:33 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ double		ft_atod(char *str);
 
 int			parse_file_name(char *infile);
 void		parse_line(t_scene *scene, char *line);
+
+void		check_inside(t_object *objs, t_vect3 cam_pos);
 
 #endif

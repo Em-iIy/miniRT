@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parse_file_name.c                                  :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 13:09:51 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/01/26 09:59:51 by gwinnink         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   parse_file_name.c                                  :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/01/20 13:09:51 by gwinnink      #+#    #+#                 */
+/*   Updated: 2023/02/14 16:02:46 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "error.h"
 #include <fcntl.h>
-#include <stdlib.h>
 
 static void	check_file_ext(char *infile)
 {

@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parse_atod.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/25 11:57:59 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/01/25 16:06:44 by gwinnink         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   parse_atod.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/01/25 11:57:59 by gwinnink      #+#    #+#                 */
+/*   Updated: 2023/02/14 16:00:36 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "error.h"
 #include <math.h>
-#include <stdio.h>
 
 double	ft_atod(char *str)
 {

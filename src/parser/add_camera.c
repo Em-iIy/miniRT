@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   add_camera.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 14:06:03 by fpurdom           #+#    #+#             */
-/*   Updated: 2023/02/09 18:27:22 by gwinnink         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   add_camera.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/01/11 14:06:03 by fpurdom       #+#    #+#                 */
+/*   Updated: 2023/02/14 15:56:38 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "parse.h"
 #include "error.h"
-#include "scene.h"
-#include <math.h>
-#include <stdlib.h>
 
 static int	parse_fov(char *str)
 {

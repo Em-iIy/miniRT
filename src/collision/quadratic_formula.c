@@ -6,12 +6,11 @@
 /*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/10 12:01:37 by gwinnink      #+#    #+#                 */
-/*   Updated: 2023/01/27 14:05:07 by fpurdom       ########   odam.nl         */
+/*   Updated: 2023/02/14 15:38:03 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include <stdbool.h>
 #include "objects.h"
 
 t_intersect	quadr_form(const double a, const double b, const double c)

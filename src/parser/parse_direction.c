@@ -1,19 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parse_direction.c                                  :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/25 14:01:10 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/02/09 18:21:31 by gwinnink         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   parse_direction.c                                  :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/01/25 14:01:10 by gwinnink      #+#    #+#                 */
+/*   Updated: 2023/02/14 16:02:18 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 #include "error.h"
-#include "vect3_math.h"
-#include <stdbool.h>
 #include <stdlib.h>
 
 static bool	is_valid(double d)

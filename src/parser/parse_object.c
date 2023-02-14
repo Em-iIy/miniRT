@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parse_object.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/25 19:17:08 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/02/09 15:56:50 by gwinnink         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   parse_object.c                                     :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/01/25 19:17:08 by gwinnink      #+#    #+#                 */
+/*   Updated: 2023/02/14 16:04:16 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "error.h"
-#include "objects.h"
 #include "parse.h"
-#include <stdlib.h>
 
 void	parse_sphere(t_object **objs, char **line)
 {

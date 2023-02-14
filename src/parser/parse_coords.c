@@ -1,16 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parse_coords.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/25 13:06:21 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/01/25 16:18:10 by gwinnink         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   parse_coords.c                                     :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/01/25 13:06:21 by gwinnink      #+#    #+#                 */
+/*   Updated: 2023/02/14 16:01:32 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vect3_math.h"
 #include "parse.h"
 #include "libft.h"
 #include "error.h"

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   scene.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 13:23:16 by fpurdom           #+#    #+#             */
-/*   Updated: 2023/02/09 11:26:59 by gwinnink         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   scene.h                                            :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/01/11 13:23:16 by fpurdom       #+#    #+#                 */
+/*   Updated: 2023/02/14 14:49:15 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,6 @@ typedef struct s_point
 }	t_point;
 
 void	init_scene(char	*infile, t_scene *scene);
+t_vect3	cast_ray(t_scene scene, double x, double y);
 
 #endif

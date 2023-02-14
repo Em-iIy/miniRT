@@ -6,12 +6,10 @@
 /*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/11 15:51:53 by fpurdom       #+#    #+#                 */
-/*   Updated: 2023/02/08 16:27:16 by fpurdom       ########   odam.nl         */
+/*   Updated: 2023/02/14 15:57:59 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vect3_math.h"
-#include "scene.h"
 #include "parse.h"
 #include "error.h"
 #include <stdlib.h>
