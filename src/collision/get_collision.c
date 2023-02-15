@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_collision.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 20:07:05 by fpurdom           #+#    #+#             */
-/*   Updated: 2023/02/07 15:10:10 by gwinnink         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   get_collision.c                                    :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/01/27 20:07:05 by fpurdom       #+#    #+#                 */
+/*   Updated: 2023/02/15 14:41:59 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
-
-int	get_pixel_colour(t_vect3 ray, t_scene *scene, t_object *saved, double t);
+#include "colour.h"
 
 static t_intersect	get_t(t_object *obj, t_vect3 cam, t_vect3 ray)
 {
-	t_intersect	temp;
-
 	if (obj->type == SPHERE)
-		temp = sphere_coli(cam, ray, obj->pos, obj->radius);
+		return (sphere_coli(cam, ray, obj->pos, obj->radius));
 	else if (obj->type == PLANE)
-		temp = plane_coli(cam, ray, obj->pos, obj->orient);
+		return (plane_coli(cam, ray, obj->pos, obj->orient));
 	else if (obj->type == CYLINDER)
-		temp = cylinder_coli(ray, cam, obj);
+		return (cylinder_coli(ray, cam, obj));
 	else if (obj->type == CIRCLE)
-		temp = circle_coli(ray, cam, obj);
-	return (temp);
+		return (circle_coli(ray, cam, obj));
+	return (create_return(0, 0));
 }
 
 int	get_collision(void *void_scene, t_vect3 ray)
@@ -54,5 +50,5 @@ int	get_collision(void *void_scene, t_vect3 ray)
 	}
 	if (t < 0)
 		return (255);
-	return (get_pixel_colour(ray, scene, saved_obj, t));
+	return (get_pixel_color(ray, scene, saved_obj, t));
 }

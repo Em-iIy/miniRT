@@ -56,8 +56,8 @@ SRCS = $(FILES_SRCS:%=$(DIR_SRCS)%)
 OBJS = $(FILES_OBJS:%=$(DIR_OBJS)%)
 
 # ----------------------------------------Flags
-CC = gcc
-# CFLAGS = -Wall -Wextra -Werror
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
 MLXFLAGS = -I $(DIR_MLX)/include
 # MLXFLAGS += -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
 INC = -Iinc -I$(DIR_LIBFT) $(MLXFLAGS)
