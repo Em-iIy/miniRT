@@ -58,9 +58,8 @@ OBJS = $(FILES_OBJS:%=$(DIR_OBJS)%)
 # ----------------------------------------Flags
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-MLXFLAGS = -I $(DIR_MLX)/include
-# MLXFLAGS += -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
-INC = -Iinc -I$(DIR_LIBFT) $(MLXFLAGS)
+MLXFLAGS = -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
+INC = -Iinc -I$(DIR_LIBFT) -I$(DIR_MLX)/include
 
 # ----------------------------------------Libraries
 LIBFT = $(DIR_LIBFT)/libft.a
@@ -71,13 +70,17 @@ ifdef WITH_ADDRESS
 CFLAGS += -g -fsanitize=address
 endif
 
+ifdef WITH_UNDEFINED
+CFLAGS += -g -fsanitize=undefined
+endif
+
 
 # ----------------------------------------Making
 all:
 	@$(MAKE) $(NAME) -j4
 
 $(NAME): $(DIR_OBJS) $(OBJS) $(LIBFT) $(MLX)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -lm $(INC) $(LIBFT) $(MLX) -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -lm $(INC) $(LIBFT) $(MLX) $(MLXFLAGS)
 
 $(DIR_OBJS)%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@ $(INC)
@@ -95,6 +98,9 @@ $(MLX):
 # ----------------------------------------Debug
 address:
 	$(MAKE) re WITH_ADDRESS=1
+
+undefined:
+	$(MAKE) re WITH_UNDEFINED=1
 
 # ----------------------------------------Cleaning
 clean:
