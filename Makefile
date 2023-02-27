@@ -95,6 +95,16 @@ $(LIBFT):
 $(MLX):
 	make -C $(DIR_MLX)
 
+# ----------------------------------------Norminette
+norme:
+	norminette ./inc
+	norminette ./src/collision
+	norminette ./src/libft
+	norminette ./src/lighting
+	norminette ./src/parser
+	norminette ./src/vect3_math
+	norminette ./src/error.c ./src/main.c
+
 # ----------------------------------------Debug
 address:
 	$(MAKE) re WITH_ADDRESS=1
