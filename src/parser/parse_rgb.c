@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   parse_rgb.c                                        :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/01/25 11:15:11 by gwinnink      #+#    #+#                 */
-/*   Updated: 2023/02/14 16:04:34 by fpurdom       ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   parse_rgb.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/25 11:15:11 by gwinnink          #+#    #+#             */
+/*   Updated: 2023/03/14 18:51:30 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "error.h"
 #include "colour.h"
-
-typedef int	t_rgb __attribute__((vector_size(16)));
 
 static bool	is_rgb(int n)
 {
