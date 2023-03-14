@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   add_camera.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/01/11 14:06:03 by fpurdom       #+#    #+#                 */
-/*   Updated: 2023/02/14 15:56:38 by fpurdom       ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   add_camera.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/11 14:06:03 by fpurdom           #+#    #+#             */
+/*   Updated: 2023/02/27 12:52:57 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_camera	new_camera(t_vect3 pos, t_vect3 orient, int fov)
 	camera.orient = vect3_normalize(vect3_0(), orient);
 	camera.fov = fov;
 	if (!orient[0] && !orient[2])
-		camera.right = vect3(0, 0, 1);
+		camera.right = vect3(1, 0, 0);
 	else
 		camera.right = vect3_normalize(vect3_0(), \
 			(t_vect3){orient[2], 0, -1 * orient[0]});
