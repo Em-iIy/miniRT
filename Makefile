@@ -42,11 +42,11 @@ DIR_OBJS = ./obj/
 DIR_LIBFT = ./src/libft
 DIR_MLX = ./src/MLX42
 
-vpath %.c $(DIR_SRCS) $(DIR_OBJS)
-vpath %.c $(DIR_SRCS)collision/ $(DIR_OBJS)
-vpath %.c $(DIR_SRCS)vect3_math/ $(DIR_OBJS)
-vpath %.c $(DIR_SRCS)parser/ $(DIR_OBJS)
-vpath %.c $(DIR_SRCS)lighting/ $(DIR_OBJS)
+vpath %.c	$(DIR_SRCS) \
+			$(DIR_SRCS)collision/ \
+			$(DIR_SRCS)vect3_math/ \
+			$(DIR_SRCS)parser/ \
+			$(DIR_SRCS)lighting/ \
 
 
 # ----------------------------------------Sources
@@ -57,7 +57,10 @@ OBJS = $(FILES_OBJS:%=$(DIR_OBJS)%)
 
 # ----------------------------------------Flags
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -O3
+# not optimized	: ./minirt rt_files/cake.rt  68.19s user 0.04s system 99% cpu 1:08.27 total
+# -O3			: ./minirt rt_files/cake.rt  17.32s user 0.03s system 99% cpu 17.386 total
+# -Ofast		: ./minirt rt_files/cake.rt  17.05s user 0.03s system 99% cpu 17.119 total
 MLXFLAGS = -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
 INC = -Iinc -I$(DIR_LIBFT) -I$(DIR_MLX)/include
 
