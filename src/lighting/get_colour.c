@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   get_colour.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/01/11 13:37:29 by fpurdom       #+#    #+#                 */
-/*   Updated: 2023/02/15 14:45:45 by fpurdom       ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   get_colour.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/11 13:37:29 by fpurdom           #+#    #+#             */
+/*   Updated: 2023/03/16 16:18:58 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	get_pixel_color(t_vect3 ray, t_scene *scene, t_object *saved, double t)
 		intersects = get_intersects(objs, point.pos, scene->light.pos);
 		if (check_intersects(intersects, point.light_dist))
 			return (get_int_rgba(
-					get_ambient(saved->color, scene->amlight.colour)));
+					get_ambient(saved->color, scene->amlight.colour) * point.colour));
 		objs = objs->next;
 	}
 	return (get_phong(point, scene));
