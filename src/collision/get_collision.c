@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   get_collision.c                                    :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/01/27 20:07:05 by fpurdom       #+#    #+#                 */
-/*   Updated: 2023/02/15 14:41:59 by fpurdom       ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   get_collision.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/27 20:07:05 by fpurdom           #+#    #+#             */
+/*   Updated: 2023/03/16 12:41:57 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,13 @@ static t_intersect	get_t(t_object *obj, t_vect3 cam, t_vect3 ray)
 	return (create_return(0, 0));
 }
 
-int	get_collision(void *void_scene, t_vect3 ray)
+int	get_collision(t_scene *scene, t_vect3 ray)
 {
 	t_object	*objs;
 	t_object	*saved_obj;
-	t_scene		*scene;
 	t_intersect	temp;
 	double		t;
 
-	scene = (t_scene *)void_scene;
 	objs = scene->objs;
 	t = -1;
 	while (objs)
