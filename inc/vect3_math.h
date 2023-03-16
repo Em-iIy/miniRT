@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   vect3_math.h                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/01/10 12:03:57 by gwinnink      #+#    #+#                 */
-/*   Updated: 2023/02/14 15:29:33 by fpurdom       ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   vect3_math.h                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/10 12:03:57 by gwinnink          #+#    #+#             */
+/*   Updated: 2023/03/16 18:35:18 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,6 @@
 # define VECT3_MATH_H
 
 typedef double	t_vect3 __attribute__ ((vector_size(32)));
-
-typedef struct s_intersect
-{
-	double	t1;
-	double	t2;
-}	t_intersect;
 
 t_vect3	vect3(double x, double y, double z);
 t_vect3	vect3_0(void);

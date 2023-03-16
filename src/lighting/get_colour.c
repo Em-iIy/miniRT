@@ -6,19 +6,13 @@
 /*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 13:37:29 by fpurdom           #+#    #+#             */
-/*   Updated: 2023/03/16 16:18:58 by gwinnink         ###   ########.fr       */
+/*   Updated: 2023/03/16 19:00:42 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "colour.h"
 
-static bool	check_intersects(t_intersect isect, double dist)
-{
-	return (((isect.t1 > 0.00000001 && isect.t2 > 0.00000001))
-		&& (isect.t1 < dist || isect.t2 < dist));
-}
-
-static t_intersect	get_intersects(t_object *obj, t_vect3 start,
+static double	get_intersect(t_object *obj, t_vect3 start,
 t_vect3 light_pos)
 {
 	if (obj->type == SPHERE)
@@ -32,7 +26,7 @@ t_vect3 light_pos)
 				start, obj));
 	else if (obj->type == CIRCLE)
 		return (circle_coli(vect3_normalize(start, light_pos), start, obj));
-	return (create_return(0, 0));
+	return (0);
 }
 
 int	get_pixel_color(t_vect3 ray, t_scene *scene, t_object *saved, double t)
@@ -45,17 +39,18 @@ int	get_pixel_color(t_vect3 ray, t_scene *scene, t_object *saved, double t)
 		.normal = get_normal(point.pos, saved) * (double)saved->inside,
 		.light_dist = vect3_abs(point.pos - scene->light.pos)
 	};
-	t_intersect		intersects;
+	double			temp;
 	t_object		*objs;
+	t_vect3			ret;
 
+	ret = get_ambient(scene->amlight.colour);
 	objs = scene->objs;
 	while (objs)
 	{
-		intersects = get_intersects(objs, point.pos, scene->light.pos);
-		if (check_intersects(intersects, point.light_dist))
-			return (get_int_rgba(
-					get_ambient(saved->color, scene->amlight.colour) * point.colour));
+		temp = get_intersect(objs, point.pos, scene->light.pos);
+		if (temp > 0.0000001 && temp < point.light_dist)
+			return (get_int_rgba(ret * point.colour));
 		objs = objs->next;
 	}
-	return (get_phong(point, scene));
+	return (get_int_rgba((ret + get_phong(point, scene)) * point.colour));
 }

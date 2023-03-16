@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:07:44 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/03/16 15:12:39 by gwinnink         ###   ########.fr       */
+/*   Updated: 2023/03/16 19:24:33 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,10 @@ static t_vect3	get_specular(t_scene *scene, t_point p)
 	return (scene->light.colour * pow(d, 4) * 0.4);
 }
 
-int	get_phong(t_point p, t_scene *scene)
+t_vect3	get_phong(t_point p, t_scene *scene)
 {
 	const t_vect3	diffuse = get_diffuse(p, scene->light.colour);
-	const t_vect3	ambient = get_ambient(p.colour, scene->amlight.colour);
 	const t_vect3	spec = get_specular(scene, p);
 
-	return (get_int_rgba((diffuse + ambient + spec) * p.colour));
-	return (get_int_rgba((0) * p.colour));
-	return (get_int_rgba((ambient) * p.colour));
-	return (get_int_rgba((diffuse) * p.colour));
-	return (get_int_rgba((spec) * p.colour));
+	return (spec + diffuse);
 }

@@ -6,16 +6,16 @@
 /*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 14:15:48 by fpurdom           #+#    #+#             */
-/*   Updated: 2023/03/16 14:14:52 by gwinnink         ###   ########.fr       */
+/*   Updated: 2023/03/16 18:46:28 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "objects.h"
 #include <math.h>
 
-t_vect3	get_ambient(t_vect3 colour_obj, t_vect3 colour_amb)
+t_vect3	get_ambient(t_vect3 colour_amb)
 {
-	return (colour_obj * colour_amb * 0.2);
+	return (colour_amb * 0.2);
 }
 
 unsigned int	get_int_rgba(t_vect3 c)

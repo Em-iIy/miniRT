@@ -26,31 +26,21 @@ c = dot_product(x, x) - dot_product(x, c_dir)^2 - radius^2
 
 */
 
-t_intersect	cylinder_coli(t_vect3 ray, t_vect3 pos, t_object *c)
+double	cylinder_coli(t_vect3 ray, t_vect3 pos, t_object *c)
 {
 	const t_vect3	x = pos - c->pos;
-	t_intersect		tube;
-	t_intersect		m;
+	double			t;
+	double			m;
 
-	tube = quadr_form(vect3_dot(ray, ray) - pow(vect3_dot(ray, c->orient), 2),
+	t = quadr_form(vect3_dot(ray, ray) - pow(vect3_dot(ray, c->orient), 2),
 			2 * (vect3_dot(ray, x) - vect3_dot(ray, c->orient)
 				* vect3_dot(x, c->orient)), vect3_dot(x, x)
 			- pow(vect3_dot(x, c->orient), 2) - pow(c->radius, 2));
-	if (tube.t1)
+	if (t > 0.0000001)
 	{
-		m.t1 = vect3_dot(ray, c->orient * tube.t1) + vect3_dot(x, c->orient);
-		if (m.t1 < 0 || m.t1 > c->lenght)
-			tube.t1 = -1;
+		m = vect3_dot(ray, c->orient * t) + vect3_dot(x, c->orient);
+		if (m < 0 || m > c->lenght)
+			t = 0;
 	}
-	if (tube.t2)
-	{
-		m.t2 = vect3_dot(ray, c->orient * tube.t2) + vect3_dot(x, c->orient);
-		if (m.t2 < 0 || m.t2 > c->lenght)
-			tube.t2 = -1;
-	}
-	if (tube.t1 > 0.00000001 && tube.t2 < 0)
-		tube.t2 = tube.t1;
-	else if (tube.t2 > 0.00000001 && tube.t1 < 0)
-		tube.t1 = tube.t2;
-	return (tube);
+	return (t);
 }

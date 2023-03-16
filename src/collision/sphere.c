@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   sphere.c                                           :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/01/10 12:00:08 by gwinnink      #+#    #+#                 */
-/*   Updated: 2023/02/14 15:54:28 by fpurdom       ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   sphere.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/10 12:00:08 by gwinnink          #+#    #+#             */
+/*   Updated: 2023/03/16 18:00:51 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ c = v^2-r^2 = 	vect3_dot(v, v) - r * r
 
 sphere_coli(scene->camera.pos(o), ray(d), objs->pos(c), objs->radius(r));
 */
-t_intersect	sphere_coli(t_vect3 o, t_vect3 d, t_vect3 c, double r)
+double	sphere_coli(t_vect3 o, t_vect3 d, t_vect3 c, double r)
 {
 	const t_vect3	v = o - c;
 

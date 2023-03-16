@@ -10,6 +10,7 @@ FILES_SRCS =	main.c \
 				vect3_cross_product.c \
 				vect3_abs.c \
 				vect3_normalize.c \
+				fmin_pos.c \
 				quadratic_formula.c \
 				get_collision.c \
 				sphere.c \

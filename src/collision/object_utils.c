@@ -1,26 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   object_utils.c                                     :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/01/10 14:49:51 by gwinnink      #+#    #+#                 */
-/*   Updated: 2023/02/14 15:33:01 by fpurdom       ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   object_utils.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/10 14:49:51 by gwinnink          #+#    #+#             */
+/*   Updated: 2023/03/16 18:34:56 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "objects.h"
 #include <stdlib.h>
-
-t_intersect	create_return(double t1, double t2)
-{
-	t_intersect	ret;
-
-	ret.t1 = t1;
-	ret.t2 = t2;
-	return (ret);
-}
 
 t_object	*obj_new(t_vect3 coords, t_vect3 color)
 {
