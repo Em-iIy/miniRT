@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   get_phong.c                                        :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/02/09 11:07:44 by gwinnink      #+#    #+#                 */
-/*   Updated: 2023/03/17 13:44:05 by fpurdom       ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   get_phong.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/09 11:07:44 by gwinnink          #+#    #+#             */
+/*   Updated: 2023/03/17 14:20:54 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static t_vect3	get_specular(t_scene *scene, t_point p)
 	double	d;
 
 	d = fmax(vect3_dot(p.cam_ray, get_reflection(p.normal, p.light_ray)), 0.0);
-	return (scene->light.colour * pow(d, 4) * 0.4);
+	return (scene->light.colour * pow(d, 32) * 0.4);
 }
 
 t_vect3	get_phong(t_point p, t_scene *scene)
