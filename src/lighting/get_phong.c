@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_phong.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/09 11:07:44 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/03/16 19:24:33 by gwinnink         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   get_phong.c                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/02/09 11:07:44 by gwinnink      #+#    #+#                 */
+/*   Updated: 2023/03/17 13:44:05 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static t_vect3	get_specular(t_scene *scene, t_point p)
 
 t_vect3	get_phong(t_point p, t_scene *scene)
 {
-	const t_vect3	diffuse = get_diffuse(p, scene->light.colour);
+	const t_vect3	diffuse = get_diffuse(p, scene->light.colour) * p.colour;
 	const t_vect3	spec = get_specular(scene, p);
 
 	return (spec + diffuse);

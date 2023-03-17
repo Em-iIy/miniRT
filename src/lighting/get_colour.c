@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_colour.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 13:37:29 by fpurdom           #+#    #+#             */
-/*   Updated: 2023/03/16 19:00:42 by gwinnink         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   get_colour.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/01/11 13:37:29 by fpurdom       #+#    #+#                 */
+/*   Updated: 2023/03/17 13:43:00 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	get_pixel_color(t_vect3 ray, t_scene *scene, t_object *saved, double t)
 	t_object		*objs;
 	t_vect3			ret;
 
-	ret = get_ambient(scene->amlight.colour);
+	ret = get_ambient(scene->amlight.colour) * point.colour;
 	objs = scene->objs;
 	while (objs)
 	{
@@ -52,5 +52,5 @@ int	get_pixel_color(t_vect3 ray, t_scene *scene, t_object *saved, double t)
 			return (get_int_rgba(ret * point.colour));
 		objs = objs->next;
 	}
-	return (get_int_rgba((ret + get_phong(point, scene)) * point.colour));
+	return (get_int_rgba(ret + get_phong(point, scene)));
 }
