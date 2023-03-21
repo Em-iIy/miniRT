@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 12:23:36 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/03/17 14:14:30 by gwinnink         ###   ########.fr       */
+/*   Updated: 2023/03/21 20:03:52 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	paint_pixels_loop(t_scene *scene, mlx_image_t *img)
 		while (x < WIDTH)
 		{
 			ray = cast_ray(*scene, x, HEIGHT / 2 - y);
-			colour = get_collision((void *)scene, ray);
+			colour = get_collision(scene, ray);
 			mlx_put_pixel(img, x, y, colour);
 			x++;
 		}
@@ -51,10 +51,13 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		error_msg_exit("Invalid arguments!\n", EXIT_FAILURE);
 	scene.mlx = mlx_init(WIDTH, HEIGHT, "MiniReTweet", true);
+	if (!scene.mlx)
+		error_msg_exit("Invalid resolution!\n", EXIT_FAILURE);
 	img = mlx_new_image(scene.mlx, WIDTH + 1, HEIGHT + 1);
 	init_scene(argv[1], &scene);
 	paint_pixels_loop(&scene, img);
 	mlx_image_to_window(scene.mlx, img, 0, 0);
 	mlx_key_hook(scene.mlx, &detect_key, NULL);
 	mlx_loop(scene.mlx);
+	exit(EXIT_SUCCESS);
 }
