@@ -36,7 +36,7 @@ double	cylinder_coli(t_vect3 ray, t_vect3 pos, t_object *c)
 			2 * (vect3_dot(ray, x) - vect3_dot(ray, c->orient)
 				* vect3_dot(x, c->orient)), vect3_dot(x, x)
 			- pow(vect3_dot(x, c->orient), 2) - pow(c->radius, 2));
-	if (t > 0.0000001)
+	if (t > 0.00001)
 	{
 		m = vect3_dot(ray, c->orient * t) + vect3_dot(x, c->orient);
 		if (m < 0 || m > c->lenght)

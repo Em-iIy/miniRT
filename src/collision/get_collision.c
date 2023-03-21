@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 20:07:05 by fpurdom           #+#    #+#             */
-/*   Updated: 2023/03/16 18:33:09 by gwinnink         ###   ########.fr       */
+/*   Updated: 2023/03/21 16:17:46 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	get_collision(t_scene *scene, t_vect3 ray)
 	while (objs)
 	{
 		temp = get_t(objs, scene->camera.pos, ray);
-		if (temp > 0.0000001 && temp < t)
+		if (temp > 0.00001 && temp < t)
 		{
 			t = temp;
 			saved_obj = objs;

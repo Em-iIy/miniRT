@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   get_colour.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/01/11 13:37:29 by fpurdom       #+#    #+#                 */
-/*   Updated: 2023/03/17 15:58:33 by fpurdom       ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   get_colour.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/11 13:37:29 by fpurdom           #+#    #+#             */
+/*   Updated: 2023/03/21 16:17:52 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	get_pixel_color(t_vect3 ray, t_scene *scene, t_object *saved, double t)
 	while (objs)
 	{
 		temp = get_intersect(objs, point.pos, scene->light.pos);
-		if (temp > 0.0000001 && temp < point.light_dist)
+		if (temp > 0.00001 && temp < point.light_dist)
 			return (get_int_rgba(ret));
 		objs = objs->next;
 	}

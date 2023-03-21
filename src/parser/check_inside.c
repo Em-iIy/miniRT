@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   check_inside.c                                     :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/02/09 14:24:08 by gwinnink      #+#    #+#                 */
-/*   Updated: 2023/03/21 16:06:14 by fpurdom       ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   check_inside.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/09 14:24:08 by gwinnink          #+#    #+#             */
+/*   Updated: 2023/03/21 16:41:50 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ static void	inside_cyl(t_object *cyl, t_vect3 cam_pos, t_vect3 light_pos)
 static void	inside_circle(t_object *c, t_vect3 cam_pos, t_vect3 light_pos)
 {
 	if (sqrt(pow(light_pos[0] - c->pos[0], 2) + pow(light_pos[1] - c->pos[1], 2)
-			+ pow(light_pos[2] - c->pos[2], 2)) <= c->radius)
+			+ pow(light_pos[2] - c->pos[2], 2)) <= c->radius && \
+			vect3_dot(light_pos - c->pos, c->orient) == 0)
 		error_msg_exit("Light source exactly on cylinder\n", 1);
 	if (vect3_dot(cam_pos - c->pos, c->orient) < 0)
 		c->inside = -1;
