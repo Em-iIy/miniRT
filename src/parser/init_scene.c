@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   init_scene.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/01/11 13:40:07 by fpurdom       #+#    #+#                 */
-/*   Updated: 2023/02/14 15:59:59 by fpurdom       ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   init_scene.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/11 13:40:07 by fpurdom           #+#    #+#             */
+/*   Updated: 2023/03/21 12:47:52 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,5 @@ void	init_scene(char	*infile, t_scene *scene)
 	close(fd);
 	if (!scene->camera.set || !scene->amlight.set || !scene->light.set)
 		error_msg_exit("scene error: missing camera or lights\n", EXIT_FAILURE);
-	check_inside(scene->objs, scene->camera.pos);
+	check_inside(scene->objs, scene->camera.pos, scene->light.pos);
 }
