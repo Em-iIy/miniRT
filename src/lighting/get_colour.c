@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/11 13:37:29 by fpurdom       #+#    #+#                 */
-/*   Updated: 2023/03/17 13:43:00 by fpurdom       ########   odam.nl         */
+/*   Updated: 2023/03/17 15:58:33 by fpurdom       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	get_pixel_color(t_vect3 ray, t_scene *scene, t_object *saved, double t)
 	{
 		temp = get_intersect(objs, point.pos, scene->light.pos);
 		if (temp > 0.0000001 && temp < point.light_dist)
-			return (get_int_rgba(ret * point.colour));
+			return (get_int_rgba(ret));
 		objs = objs->next;
 	}
 	return (get_int_rgba(ret + get_phong(point, scene)));
