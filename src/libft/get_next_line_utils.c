@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 13:37:24 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/01/20 12:54:21 by gwinnink         ###   ########.fr       */
+/*   Updated: 2023/03/22 11:51:29 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	*gnl_calloc(unsigned int count, size_t size)
 	i = 0;
 	ret_ptr = (char *)malloc(count * size);
 	if (!ret_ptr)
-		return (NULL);
+		exit(EXIT_FAILURE);
 	while (i < count * size)
 	{
 		ret_ptr[i] = 0;

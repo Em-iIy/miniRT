@@ -6,7 +6,7 @@
 /*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 13:37:15 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/01/20 12:54:00 by gwinnink         ###   ########.fr       */
+/*   Updated: 2023/03/22 11:51:55 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static char	*read_into_buff(int fd, char *buff)
 	b_read = 1;
 	temp = (char *)malloc(BUFFER_SIZE + 1);
 	if (!temp)
-		return (NULL);
+		exit(EXIT_FAILURE);
 	while (!gnl_strchr(buff, '\n') && b_read != 0)
 	{
 		b_read = read(fd, temp, BUFFER_SIZE);

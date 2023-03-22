@@ -6,13 +6,26 @@
 /*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 12:23:36 by gwinnink          #+#    #+#             */
-/*   Updated: 2023/03/21 20:03:52 by gwinnink         ###   ########.fr       */
+/*   Updated: 2023/03/22 12:12:39 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scene.h"
 #include "error.h"
 #include <stdlib.h>
+
+static void	free_scene(t_scene *scene)
+{
+	t_object	*temp;
+
+	temp = scene->objs;
+	while (temp)
+	{
+		temp = scene->objs->next;
+		free(scene->objs);
+		scene->objs = temp;
+	}
+}
 
 static void	detect_key(mlx_key_data_t keydata, void *param)
 {
@@ -54,10 +67,15 @@ int	main(int argc, char **argv)
 	if (!scene.mlx)
 		error_msg_exit("Invalid resolution!\n", EXIT_FAILURE);
 	img = mlx_new_image(scene.mlx, WIDTH + 1, HEIGHT + 1);
+	if (!img)
+		error_msg_exit("Failed to create image\n", EXIT_FAILURE);
 	init_scene(argv[1], &scene);
 	paint_pixels_loop(&scene, img);
 	mlx_image_to_window(scene.mlx, img, 0, 0);
 	mlx_key_hook(scene.mlx, &detect_key, NULL);
 	mlx_loop(scene.mlx);
-	exit(EXIT_SUCCESS);
+	mlx_delete_image(scene.mlx, img);
+	mlx_close_window(scene.mlx);
+	free_scene(&scene);
+	return (0);
 }
