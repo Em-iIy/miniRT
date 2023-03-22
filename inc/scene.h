@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   scene.h                                            :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: gwinnink <gwinnink@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/01/11 13:23:16 by fpurdom       #+#    #+#                 */
-/*   Updated: 2023/02/14 14:49:15 by fpurdom       ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   scene.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/11 13:23:16 by fpurdom           #+#    #+#             */
+/*   Updated: 2023/03/22 16:37:42 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ typedef struct s_camera
 	t_vect3	orient;
 	t_vect3	right;
 	t_vect3	up;
+	double	step;
+	double	step_up;
 	double	dist;
 	int		fov;
 	bool	set;

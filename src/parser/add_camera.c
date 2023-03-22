@@ -6,13 +6,14 @@
 /*   By: gwinnink <gwinnink@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:06:03 by fpurdom           #+#    #+#             */
-/*   Updated: 2023/02/27 12:52:57 by gwinnink         ###   ########.fr       */
+/*   Updated: 2023/03/22 16:32:12 by gwinnink         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "parse.h"
 #include "error.h"
+#include <math.h>
 
 static int	parse_fov(char *str)
 {
@@ -41,6 +42,9 @@ t_camera	new_camera(t_vect3 pos, t_vect3 orient, int fov)
 	else
 		camera.up = vect3_normalize(vect3_0(), \
 			vect3_cross_product(orient, camera.right));
+	camera.step = tan((camera.fov / 2) * (M_PI / 180));
+	camera.step_up = tan(((camera.fov * ((float)HEIGHT / (float)WIDTH)) / 2)
+			* (M_PI / 180));
 	return (camera);
 }
 
